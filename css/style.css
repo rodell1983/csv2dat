@@ -1,0 +1,93 @@
+body {
+    background-color: darkgray;
+}
+
+header {
+    background-color: darkslategray;
+    color: white;
+    padding: 1rem;
+}
+
+.channel_cards {
+    overflow: scroll;
+    height: 60vh;
+}
+
+.side_bar {
+    background-color: cadetblue;
+}
+
+.card_titles {
+    font-weight: bold;
+    background-color: white;
+    padding: .5rem;
+
+}
+
+.channel_card,
+.card_titles {
+    display: grid;
+    grid-template-columns: 100px 70px 100px 70px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 200px;
+
+
+}
+
+.channel_card:nth-child(even) input,
+.channel_card:nth-child(even) select {
+    background-color: lightgray;
+}
+
+input,
+option,
+select {
+    border: none;
+    padding: .5rem;
+}
+
+option {
+    background-color: white;
+    padding: 1rem;
+}
+
+.page {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.tab ul {
+    display: flex;
+}
+
+.tab ul {
+    display: flex;
+    justify-content: left;
+    list-style-type: none;
+    margin: 0;
+    padding: .5rem;
+    padding-bottom: 0;
+    width: calc(100% - 1rem);
+}
+
+.tab ul li {
+    padding: .5rem;
+    margin-right: 2px;
+    background-color: darkgray;
+    color: #000;
+    border: 1px solid #555;
+    border-radius: 4px 4px 0 0;
+    border-bottom: none;
+    font-weight: bold;
+    box-shadow: inset 1px 1px 1px #666;
+}
+.tab ul li:hover {
+
+    background-color: white;
+    color: #333;
+}
+
+.active{
+    background-color: white;
+    color: #333;
+}
+
+

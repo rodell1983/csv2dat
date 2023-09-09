@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>UV17 Programmer</title>
+    <meta name="description" content="Our first page" />
+    <meta name="keywords" content="html tutorial template" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>CVS Importer for Baofeng UV Radios</h1>
+    </header>
+    <div class="page">
+      <aside class="side_bar">
+        <select name="radio_type" id="radio_type">
+            <option value="UV17-Pro">UV17 Pro</option>
+            <option value="UV18-Pro">UV18 Pro</option>
+            <option value="UV19-Pro">UV19 Pro</option>
+            <option value="UV20-Pro">UV20 Pro</option>
+            <option value="UV21-Pro">UV21 Pro</option>
+            <option value="UV22-Pro">UV22 Pro</option>
+          </select>
+        <button onclick="importData()">Import Data</button>
+        <button onclick="writeDAT()">Create .dat File</button>
+      </aside>
+      <main>
+        <nav class="tab">
+            <ul>
+                <li>Global</li>
+                <li>Zones</li>
+                <li class="active">Channels</li>
+                <li>VFO</li>
+                <li>DTMF</li>
+            </ul>
+        </nav>
+        
+        <div class="card_titles">
+          <span>Rx Freq</span>
+          <span>Rx QT/DQT</span>
+          <span>Tx Freq</span>
+          <span>Tx QT/DQT</span>
+          <span>Power</span>
+          <span>W/N</span>
+          <span>Scan</span>
+          <span>SQ Mode</span>
+          <span>PTT-ID</span>
+          <span>Signaling</span>
+          <span>BCL</span>
+          <span>FHSS</span>
+          <span>Name</span>
+        </div>
+        <div class="channel_cards"></div>
+      </main>
+    </div>
+  </body>
+  <script src="./js/reader.js"></script>
+  <script src="./js/ui.js"></script>
+</html>
