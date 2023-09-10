@@ -27,7 +27,7 @@ header {
 .channel_card,
 .card_titles {
     display: grid;
-    grid-template-columns: 100px 70px 100px 70px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 200px;
+    grid-template-columns: 25px 100px 70px 100px 70px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 200px;
 
 
 }
@@ -68,26 +68,40 @@ option {
     width: calc(100% - 1rem);
 }
 
+
 .tab ul li {
     padding: .5rem;
     margin-right: 2px;
-    background-color: darkgray;
     color: #000;
     border: 1px solid #555;
     border-radius: 4px 4px 0 0;
     border-bottom: none;
     font-weight: bold;
     box-shadow: inset 1px 1px 1px #666;
+    cursor: pointer;
+}
+
+.active, .tab ul li:hover {
+
+    background-color: white;
+    color: #333;
 }
 .tab ul li:hover {
-
-    background-color: white;
-    color: #333;
-}
-
-.active{
-    background-color: white;
-    color: #333;
+    transform: scale(110%);
 }
 
 
+.pu-channel-edit{
+    background-color: red;
+    padding: 2rem;
+    position: absolute;
+
+}
+
+main {
+    position: relative;
+}
+
+.ch-index{
+    cursor: pointer;
+}
