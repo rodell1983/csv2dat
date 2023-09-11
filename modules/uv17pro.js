@@ -255,6 +255,11 @@ export class UV17Channel {
   
     formatFreq(freq) {
       freq = String(freq).trim();
+
+      if(freq.includes('.') == false){
+        freq = freq.slice(0, 3) + '.' + freq.slice(3);
+      }
+
       let size = freq.length;
   
       if (size > 9) {
@@ -362,6 +367,7 @@ export class UV17Channel {
  export class Zone {
     channels = [];
     maxChannels = 100;
+    name = '';
   
     constructor(channels = [], maxChannels = 100) {
       this.channels = channels;
@@ -398,6 +404,46 @@ export class UV17Channel {
  export class RadioProgram {
     zones = [];
     maxZones = 10;
+
+    //global values
+    globalValues = {
+      sql:3,
+      tot:2,
+      savemode:1,
+      totalarm:3,
+      pilottone:2,
+      sidetone:0,
+      tailclear:1,
+      powerdisp:0,
+      beep:3,
+      roger:0,
+      lang:1,
+      scanmode:1,
+      alarmmode:0,
+      soundalarm:0,
+      keylock:0,
+      fm:0,
+      keyautolock:0,
+      menuquittimer:1,
+      backlighttimer:3,
+      sendiddelay:6,
+      qtsavemode:0,
+      skey2short:0,
+      chadisplay:0,
+      workmodea:0,
+      chbdisplay:0,
+      workmodeb:0,
+      rpttailclear:5,
+      rpttaildelay:5,
+      enablemenurst:1,
+      voxswitch:0,
+      voxlv:0,
+      voxdlytime:5,
+      gpsswitch:0,
+      gpsmode:2
+
+    }
+
   
     constructor(maxZones = 10) {
       this.maxZones = maxZones;
@@ -439,16 +485,18 @@ export class UV17Channel {
     generateDatBuffer() {
       let ab = [];
   
-      let head = genertateDatHead();
+      let head = this.genertateDatHead();
       ab.push(head);
   
       let chanIndex = 185;
       let strIndex = 1738;
   
       for (var zone = 0; zone < this.maxZones; zone++) {
-        for (var chan = 0; chan < this.zones.maxChannels; chan++) {
+        for (var chan = 0; chan < this.getZone(zone).maxChannels; chan++) {
           let c = this.zones[zone].getChannel(chan);
+
           c.strIndex = strIndex;
+          c.chanIndex = chanIndex;
   
           let cb = c.getChannelBuffer();
           ab.push(cb);
@@ -467,6 +515,7 @@ export class UV17Channel {
       let close = new Uint8Array([0x0b]);
       ab.push(close);
   
+
       return ab;
     }
   }

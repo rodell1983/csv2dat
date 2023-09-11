@@ -33,12 +33,6 @@ function createCard(c,index) {
   return div;
 }
 
-function createChannelEditor(){
-  let editorHTML = `<button id="delete-chan">Delete</button><button id="clear-chan">Clear</button>`;
-  let div = document.createElement('div');
-  div.innerHTML = editorHTML;
-  return div;
-}
 
 export function populateChannelCards(radioProgram,zone = 0) {
   //Clear cards

@@ -6,6 +6,8 @@ export function writeDAT() {
 
   if (response) {
     const fileName = prompt("Enter file name");
+    writeFile(Main.getRadioProgram().generateDatBuffer(), `${fileName}.dat`);
+    /*
 
     let ccIndexes = getcsvIndexes();
     let ccList = getcsvList();
@@ -38,7 +40,7 @@ export function writeDAT() {
     let close = new Uint8Array([0x0b]);
     ab.push(close);
 
-    writeFile(ab, fileName + ".dat");
+    writeFile(ab, fileName + ".dat");*/
   }
 }
 
@@ -59,7 +61,7 @@ const readFile = (file) => {
       csvList = csvList.splice(1);
       Chirp.storecsvList(csvList);
 
-      Main.loadRPFromChirp(Chirp.getcsvIndexes(),Chirp.getcsvList());
+      Main.loadRPFromChirp(Chirp.getcsvIndexes(), Chirp.getcsvList());
     };
 
     reader.readAsText(file);
@@ -69,26 +71,18 @@ const readFile = (file) => {
 const importData = async (event) => {
   const input = document.createElement("input");
   input.type = "file";
-  input.onchange = async() => {
-      var file = input.files[0];
-      if (file.name.match(/\.(txt|csv)$/)) {
-        
-        try {
-          
-          const fr = await readFile(file);
-          
-        } catch (error) {
-          
-        }
-        
-      } else {
-        alert("File not supported, .txt or .csv files only");
-      }
-  }; 
+  input.onchange = async () => {
+    var file = input.files[0];
+    if (file.name.match(/\.(txt|csv)$/)) {
+      try {
+        const fr = await readFile(file);
+      } catch (error) {}
+    } else {
+      alert("File not supported, .txt or .csv files only");
+    }
+  };
   input.click();
- 
 };
-
 
 export function writeFile(buffers, fileName) {
   var file = new Blob(buffers, {
@@ -103,5 +97,6 @@ export function writeFile(buffers, fileName) {
 }
 
 document
-  .querySelector("#import-data-btn")
+  .getElementById("import-data-btn")
   .addEventListener("click", importData);
+document.getElementById("write-dat-btn").addEventListener("click", writeDAT);
