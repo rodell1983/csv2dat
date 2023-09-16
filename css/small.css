@@ -1,0 +1,180 @@
+body {
+    background-color: darkgray;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+}
+header h1 {
+    text-align: center;
+}
+
+.logo{
+    display: grid;
+    grid-template-columns: 80px auto;
+}
+
+.logo img {
+    width: 64px;
+}
+
+.logo span {
+    font-size: 1.5rem;
+}
+
+
+.cards{
+    display: grid;
+    justify-content: center;
+
+}
+
+
+.card-titles {
+    display: none;
+
+}
+
+.channel-card {
+    display: grid;
+    justify-self: center;
+margin: .5rem;
+    padding: .5rem;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 4px 4px 4px #333;
+
+
+}
+
+
+.channel-cards {
+    display: flex;
+    justify-self: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+
+
+}
+
+.channel-card input,
+.channel-card option,
+.channel-card select,
+.channel-card span {
+    border: 1px solid #555;
+    padding: 0.2rem;
+    text-align: center;
+}
+
+.channel-card input:invalid{
+    background-color: lightsalmon;
+}
+
+
+option {
+    background-color: white;
+    padding: 1rem;
+}
+
+.page {
+    display: grid;
+    
+}
+
+/* Nav */
+.tab ul {
+        /* display: grid; */
+        justify-content: center;
+        list-style-type: none;
+        margin: 0;
+        padding: 0.5rem 0.5rem 0 0;
+        /* padding-bottom: 0; */
+        /* width: 500px;*/
+}
+
+
+.tab ul li {
+    background-color: #333;
+    padding: 0.5rem;
+    /* margin-right: 2px; */
+    color: white;
+    border: 1px solid #555;
+    /* border-radius: 4px 4px 0 0; */
+    /* border-bottom: none; */
+    font-weight: bold;
+    /* box-shadow: inset 1px 1px 1px #666; */
+    cursor: pointer;
+    /* width: 100%; */
+    text-align: center;
+}
+
+.active {
+
+    background-color: white;
+    color: #333;
+}
+
+.tab ul li:hover {
+    background-color: #eee;
+    color: black;
+}
+
+.ch-index {
+    cursor: pointer;
+}
+
+.tab-page {
+    display: none;
+    border-radius: 0 0 8px 8px;
+    padding: .5rem;
+    justify-content: inherit;
+}
+
+.channel-options {
+    display: flex;
+    padding: .5rem;
+    background-color: inherit;
+}
+
+.page-global-group select {
+    padding: .5rem;
+    width: 120px;
+}
+
+.page-global-group{
+    display: grid;
+    justify-items: right;
+    grid-gap: .25rem;
+}
+.page-header{
+    display: flex;
+    justify-content: center;
+    width: -webkit-fill-available;
+    padding: .5rem;
+    margin-bottom: 1rem;
+    border: 2px solid #333;
+    background-color: lightgrey;
+    justify-items: center;
+    grid-column: 1 / -1;
+    justify-self: center;
+}
+#page-global {
+    display: grid;
+    grid-template-columns: 1fr ;
+    justify-items: center;
+}
+#page-zones input {
+    margin: .5rem;
+    
+}
+
+.zone-names{
+    display: grid;
+    justify-content: center;
+}
+

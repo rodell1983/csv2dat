@@ -7,40 +7,6 @@ export function writeDAT() {
   if (response) {
     const fileName = prompt("Enter file name");
     writeFile(Main.getRadioProgram().generateDatBuffer(), `${fileName}.dat`);
-    /*
-
-    let ccIndexes = getcsvIndexes();
-    let ccList = getcsvList();
-
-    let ab = [];
-
-    let head = genertateDatHead();
-    ab.push(head);
-
-    let chanIndex = 185;
-    let strIndex = 1738;
-
-    for (var i = 0; i < 1000; i++) {
-      let c = new UV17Channel(chanIndex, strIndex);
-
-      if (i < ccList.length) {
-        let cc = new ChirpChannel(ccIndexes, ccList[i]);
-        c.loadFromChirpChannel(cc);
-      }
-
-      let cb = c.getChannelBuffer();
-      ab.push(cb);
-      console.log(cb);
-
-      chanIndex = c.chanIndex;
-      strIndex = c.strIndex;
-    }
-
-    //Close program
-    let close = new Uint8Array([0x0b]);
-    ab.push(close);
-
-    writeFile(ab, fileName + ".dat");*/
   }
 }
 

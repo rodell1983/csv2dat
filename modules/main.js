@@ -11,6 +11,9 @@ export function getRadioProgram(){
 }
 
 export function loadRPFromChirp(indexes, list) {
+  if(!validateChirpCsv(indexes,list)){
+    return false;
+  }
   radioProgram.clearZones();
 
   for (var i = 0; i < list.length-1; i++) {
@@ -20,7 +23,15 @@ export function loadRPFromChirp(indexes, list) {
     let zIndex = Math.trunc(i / 100);
     radioProgram.getZone(zIndex).addChannel(c);
   }
-  UI.populateChannelCards(radioProgram);
+  UI.populateChannelCards(radioProgram,0);
+}
+
+function validateChirpCsv(indexes,list){
+  if(indexes == null || list == null){
+    return false;
+  }else{
+    return true;
+  }
 }
 
 function zoneChange() {
@@ -65,9 +76,29 @@ function channelsTabClick() {
   tab.classList.add("active");
 }
 
+function deleteChannels(){
+  let zone = parseInt(document.getElementById("zone-list").value);
+  let channels = document.getElementsByClassName("ch-index");
+
+  for (var i = channels.length -1; i >=0 ; i-- ){
+
+    if(channels[i].style.backgroundColor === "red"){
+      radioProgram.getZone(zone).removeChannel(i);
+    }
+
+  }
+
+  UI.populateChannelCards(radioProgram, zone);
+}
+
+
+
+
+
 //Add event listeners
 
-document.querySelector("#zone-list").addEventListener("change", zoneChange);
+document.getElementById("zone-list").addEventListener("change", zoneChange);
+document.getElementById("channel-opt-del").addEventListener("click", deleteChannels);
 
 //Tab pages
 document.getElementById("tab-global").addEventListener("click", globalTabClick);
@@ -82,5 +113,10 @@ channelsTabClick();
 loadRPFromChirp(Chirp.getcsvIndexes(), Chirp.getcsvList());
 const dict = radioProgram.globalValues;
 for (const key in dict) {
-  document.getElementById(`global-${key}`).value = dict[key];
+  let e = document.getElementById(`global-${key}`);
+  if(e !== null){
+    e.value = dict[key];
+  }
+
+  
 }

@@ -1,0 +1,93 @@
+@media only screen and (min-width: 75em) {
+    
+    .logo span {
+        font-size: 2rem;
+    }
+    .card-titles {
+        display: grid;
+        font-weight: bold;
+        background-color: white;
+        justify-self: center;
+    
+    }
+    .card-titles span {
+        border: 1px solid #555;
+    }
+    
+    .channel-card,
+    .card-titles {
+        
+        grid-template-columns: 35px 100px 70px 100px 70px 70px 70px 70px 100px 70px 70px 70px 70px 200px;
+    
+    
+    }
+
+    .channel-card {
+        display: grid;
+        justify-self: center;
+    margin: 0;
+        padding: 0;
+        border-radius: 0;
+
+        box-shadow: none;
+    
+    
+    }
+
+    .channel-card label {
+        display: none;
+    }
+    
+    .channel-card:nth-child(even) input,
+    .channel-card:nth-child(even) select {
+        background-color: lightgray;
+    }
+
+
+    .channel-cards {
+        display: grid;
+        justify-self: center;
+    
+    
+    }
+    
+    /* Nav */
+.tab ul {
+    display: flex;
+    justify-content: left;
+    list-style-type: none;
+    margin: 0;
+    padding: .5rem .5rem 0 0;
+    padding-bottom: 0;
+    width: calc(100% - 1rem);
+}
+
+
+.tab ul li {
+    background-color: lightgray;
+    padding: .5rem;
+    margin-right: 2px;
+    color: #000;
+    border: 1px solid #555;
+    border-radius: 4px 4px 0 0;
+    border-bottom: none;
+    font-weight: bold;
+    box-shadow: inset 1px 1px 1px #666;
+    cursor: pointer;
+}
+.tab ul li:hover {
+    transform: scale(1.1);
+}
+    
+.tab-page {
+
+    background-color: white;
+
+}
+
+#page-global {
+
+    grid-template-columns: 1fr 1fr 1fr ;
+
+}
+  }
