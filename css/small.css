@@ -27,6 +27,12 @@ a {
 a:hover{
     color: #f66700;
 }
+
+.link-light{
+    color: #000;
+    text-decoration: underline
+}
+
 .logo{
     display: grid;
     grid-template-columns: 100px auto;
@@ -39,6 +45,12 @@ a:hover{
 
 .logo span {
     font-size: 1.5rem;
+}
+
+.download-span{
+    display: inline-block;
+    line-height: 60px;
+    vertical-align: middle;
 }
 
 .main-home{

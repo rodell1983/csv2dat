@@ -2,7 +2,10 @@
 <html>
   <head>
     <title>CSV2DAT - UV17-Pro</title>
-    <meta name="description" content="Online radio editor for Baofeng UV Pro radios" />
+    <meta
+      name="description"
+      content="Online radio editor for Baofeng UV Pro radios"
+    />
     <meta name="keywords" content="html tutorial template" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,41 +20,52 @@
   <body>
     <header>
       <div class="logo">
-        <a href="./index.html"><img src="./images/logo.png" alt="CSV2DAT Logo" /></a>
+        <a href="./index.html"
+          ><img src="./images/logo.png" alt="CSV2DAT Logo"
+        /></a>
       </div>
       <div>
-        <h1>CSV-2-DAT  Online Radio Editing Software</h1>
+        <h1>CSV-2-DAT Online Radio Editing Software</h1>
         <nav class="main-menu">
           <ul>
             <li><a href="./index.html">Home</a></li>
             <li><a href="./uv17pro.html">Online Editor</a></li>
-            <li><a href="https://github.com/rodell1983/csv2dat" target="_blank">GitHub</a></li>
+            <li>
+              <a href="https://github.com/rodell1983/csv2dat" target="_blank"
+                >GitHub</a
+              >
+            </li>
           </ul>
         </nav>
-        
       </div>
     </header>
 
     <div class="page">
       <main>
         <div class="nav-bar">
-          
-        <nav class="tab">
-          <ul>
-            <li id="tab-global" class="tab">Global</li>
-            <li id="tab-zones" class="tab">Zones</li>
-            <li id="tab-channels" class="tab active">Channels</li>
-            <li id="tab-vfo" class="tab">VFO</li>
-            <li id="tab-dtmf" class="tab">DTMF</li>
-          </ul>
-          
-        </nav><nav class="nav-cmds">
+          <nav class="tab">
+            <ul>
+              <li id="tab-global" class="tab">Global</li>
+              <li id="tab-zones" class="tab">Zones</li>
+              <li id="tab-channels" class="tab active">Channels</li>
+              <li id="tab-vfo" class="tab">VFO</li>
+              <li id="tab-dtmf" class="tab">DTMF</li>
+            </ul>
+          </nav>
+
+          <nav class="nav-cmds">
+            <span class="download-span"
+              ><a
+                class="link-light"
+                href="https://www.miklor.com/RadioSoftware/Baofeng%20UV-PROs%20v124.zip"
+                >Download CPS Software</a></span>
+            
             <button id="new-dat-btn">New</button>
             <button id="import-dat-btn">Import Chirp .csv</button>
             <button id="write-dat-btn">Create .dat</button>
           </nav>
         </div>
-        
+
         <div id="page-global" class="tab-page">
           <div class="page-header">
             <label for="radio-type"
@@ -425,35 +439,75 @@
           <div class="page-header"></div>
           <div class="zone-names">
             <label
-              >Zone 1:<input class="zone-name" id="zones-name1" type="text"
-            /><button class="zone-channels-clear" zone="0">Clear Channels</button></label>
+              >Zone 1:<input
+                class="zone-name"
+                id="zones-name1"
+                type="text"
+              /></label
+            >
             <label
-              >Zone 2:<input class="zone-name" id="zones-name2" type="text"
-            /><button class="zone-channels-clear" zone="1">Clear Channels</button></label>
+              >Zone 2:<input
+                class="zone-name"
+                id="zones-name2"
+                type="text"
+              /></label
+            >
             <label
-              >Zone 3:<input class="zone-name" id="zones-name3" type="text"
-            /><button class="zone-channels-clear" zone="2">Clear Channels</button></label>
+              >Zone 3:<input
+                class="zone-name"
+                id="zones-name3"
+                type="text"
+              /></label
+            >
             <label
-              >Zone 4:<input class="zone-name" id="zones-name4" type="text"
-            /><button class="zone-channels-clear" zone="3">Clear Channels</button></label>
+              >Zone 4:<input
+                class="zone-name"
+                id="zones-name4"
+                type="text"
+              /></label
+            >
             <label
-              >Zone 5:<input class="zone-name" id="zones-name5" type="text"
-            /><button class="zone-channels-clear" zone="4">Clear Channels</button></label>
+              >Zone 5:<input
+                class="zone-name"
+                id="zones-name5"
+                type="text"
+              /></label
+            >
             <label
-              >Zone 6:<input class="zone-name" id="zones-name6" type="text"
-            /><button class="zone-channels-clear" zone="5">Clear Channels</button></label>
+              >Zone 6:<input
+                class="zone-name"
+                id="zones-name6"
+                type="text"
+              /></label
+            >
             <label
-              >Zone 7:<input class="zone-name" id="zones-name7" type="text"
-            /><button class="zone-channels-clear" zone="6">Clear Channels</button></label>
+              >Zone 7:<input
+                class="zone-name"
+                id="zones-name7"
+                type="text"
+              /></label
+            >
             <label
-              >Zone 8:<input class="zone-name" id="zones-name8" type="text"
-            /><button class="zone-channels-clear" zone="7">Clear Channels</button></label>
+              >Zone 8:<input
+                class="zone-name"
+                id="zones-name8"
+                type="text"
+              /></label
+            >
             <label
-              >Zone 9:<input class="zone-name" id="zones-name9" type="text"
-            /><button class="zone-channels-clear" zone="8">Clear Channels</button></label>
+              >Zone 9:<input
+                class="zone-name"
+                id="zones-name9"
+                type="text"
+              /></label
+            >
             <label
-              >Zone 10:<input class="zone-name" id="zones-name10" type="text"
-            /><button class="zone-channels-clear" zone="9">Clear Channels</button></label>
+              >Zone 10:<input
+                class="zone-name"
+                id="zones-name10"
+                type="text"
+              /></label
+            >
           </div>
         </div>
         <div id="page-channels" class="tab-page">
