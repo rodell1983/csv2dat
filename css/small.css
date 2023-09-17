@@ -10,6 +10,12 @@ header {
     color: white;
     padding: 1rem;
 }
+footer{
+    display: grid;
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+}
 header h1 {
     text-align: center;
 }
