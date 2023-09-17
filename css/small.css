@@ -5,35 +5,38 @@ body {
 
 header {
     display: grid;
-    grid-template-columns: auto 1fr ;
+    grid-template-columns: auto 1fr;
     background-color: #333;
     color: white;
     padding: 1rem;
 }
-footer{
+
+footer {
     display: grid;
     background-color: #333;
     color: white;
     padding: 1rem;
 }
+
 header h1 {
     text-align: center;
 }
+
 a {
     text-decoration: none;
     color: #eee;
 }
 
-a:hover{
+a:hover {
     color: #f66700;
 }
 
-.link-light{
+.link-light {
     color: #000;
     text-decoration: underline
 }
 
-.logo{
+.logo {
     display: grid;
     grid-template-columns: 100px auto;
     align-items: center;
@@ -47,13 +50,13 @@ a:hover{
     font-size: 1.5rem;
 }
 
-.download-span{
+.download-span {
     display: inline-block;
     line-height: 60px;
     vertical-align: middle;
 }
 
-.main-home{
+.main-home {
     padding: 1rem;
     background-color: white;
     color: #333;
@@ -71,16 +74,19 @@ button {
     cursor: pointer;
     margin: .5rem;
 }
- select, input,option {
+
+select,
+input,
+option {
     box-shadow: 2px 2px 4px #333;
     border-radius: 4px;
     border: 1px solid #555;
     padding: 0.5rem;
- }
+}
 
 
 
-.cards{
+.cards {
     display: grid;
     justify-content: center;
 
@@ -96,7 +102,7 @@ button {
 .channel-card {
     display: grid;
     justify-self: center;
-margin: .5rem;
+    margin: .5rem;
     padding: .5rem;
     border-radius: 5px;
     background-color: white;
@@ -136,18 +142,18 @@ option {
 
 .page {
     display: grid;
-    
+
 }
 
 /* Nav */
 .tab ul {
-        /* display: grid; */
-        justify-content: center;
-        list-style-type: none;
-        margin: 0;
-        padding: 0.5rem 0.5rem 0 0;
-        /* padding-bottom: 0; */
-        /* width: 500px;*/
+    /* display: grid; */
+    justify-content: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0.5rem 0.5rem 0 0;
+    /* padding-bottom: 0; */
+    /* width: 500px;*/
 }
 
 
@@ -199,12 +205,13 @@ option {
     width: 120px;
 }
 
-.page-global-group{
+.page-global-group {
     display: grid;
     justify-items: right;
     grid-gap: .25rem;
 }
-.page-header{
+
+.page-header {
     display: flex;
     justify-content: center;
     width: -webkit-fill-available;
@@ -216,21 +223,42 @@ option {
     grid-column: 1 / -1;
     justify-self: center;
 }
+
 #page-global {
     display: grid;
-    grid-template-columns: 1fr ;
+    grid-template-columns: 1fr;
     justify-items: center;
 }
+
 #page-zones input {
     margin: .5rem;
-    
+
 }
 
-.zone-names{
+.zone-names {
     display: flex;
     flex-wrap: wrap;
 }
-.channel-card input:invalid{
+
+.channel-card input:invalid {
     background-color: lightsalmon;
 }
 
+.main-menu ul {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    margin: 0;
+    padding: .5rem .5rem 0 0;
+    padding-bottom: 0;
+}
+
+.main-menu ul li {
+
+    padding: .5rem;
+    margin-right: 2px;
+    font-size: 1.2rem;
+    font-weight: bold;
+
+    cursor: pointer;
+}
