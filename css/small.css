@@ -108,9 +108,7 @@ margin: .5rem;
     border-radius: 0;
 }
 
-.channel-card input:invalid{
-    background-color: lightsalmon;
-}
+
 
 
 option {
@@ -213,6 +211,8 @@ option {
 .zone-names{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+}
+.channel-card input:invalid{
+    background-color: lightsalmon;
 }
 

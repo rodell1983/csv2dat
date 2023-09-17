@@ -84,13 +84,41 @@ function deleteChannels() {
   let zone = parseInt(document.getElementById("zone-list").value);
   let channels = document.getElementsByClassName("ch-index");
 
+  let delCount = 0;
+
   for (var i = channels.length - 1; i >= 0; i--) {
     if (channels[i].style.backgroundColor === "red") {
       radioProgram.getZone(zone).removeChannel(i);
+      delCount++;
     }
   }
 
   UI.populateChannelCards(radioProgram, zone);
+
+  if(delCount > 0){
+    let c = '';
+    if(delCount == 1){
+      c = 'Channel';
+    }else{
+      c = 'Channels';
+    }
+    alert(`${delCount} ${c} Deleted`);
+  }else{
+    alert('No channels selected');
+  }
+}
+
+function addChannel(){
+  let zone = parseInt(document.getElementById("zone-list").value);
+  let rpZone = radioProgram.getZone(zone);
+  if (rpZone.getChannelCount() >= rpZone.maxChannels){
+    alert(`No available channel slots for zone ${rpZone.getName()}`);
+  }else{
+    rpZone.addChannel(new UV17Pro.UV17Channel());
+    UI.populateChannelCards(radioProgram, zone);
+    var height = document.body.scrollHeight;
+    window.scroll(0 , height);
+  }
 }
 
 export function newProgram() {
@@ -110,6 +138,9 @@ document.getElementById("zone-list").addEventListener("change", zoneChange);
 document
   .getElementById("channel-opt-del")
   .addEventListener("click", deleteChannels);
+  document
+  .getElementById("channel-opt-add")
+  .addEventListener("click", addChannel);
 document.getElementById("new-dat-btn").addEventListener("click", newProgram);
 
 //Tab pages
