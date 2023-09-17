@@ -6,7 +6,13 @@ export function writeDAT() {
 
   if (response) {
     const fileName = prompt("Enter file name");
-    writeFile(Main.getRadioProgram().generateDatBuffer(), `${fileName}.dat`);
+
+    if(fileName.trim() === ''){
+      alert("Invalid file name");
+    }else{
+      writeFile(Main.getRadioProgram().generateDatBuffer(), `${fileName}.dat`);
+    }
+    
   }
 }
 
@@ -43,6 +49,7 @@ const importData = async (event) => {
       try {
         const fr = await readFile(file);
       } catch (error) {}
+      alert(`${file.name} Imported Successfully`)
     } else {
       alert("File not supported, .txt or .csv files only");
     }

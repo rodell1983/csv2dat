@@ -1,10 +1,11 @@
 body {
     background-color: darkgray;
+    font-family: 'Kanit', sans-serif;
 }
 
 header {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: auto 1fr ;
     background-color: #333;
     color: white;
     padding: 1rem;
@@ -12,19 +13,53 @@ header {
 header h1 {
     text-align: center;
 }
+a {
+    text-decoration: none;
+    color: #eee;
+}
 
+a:hover{
+    color: #f66700;
+}
 .logo{
     display: grid;
-    grid-template-columns: 80px auto;
+    grid-template-columns: 100px auto;
+    align-items: center;
 }
 
 .logo img {
-    width: 64px;
+    width: 100px;
 }
 
 .logo span {
     font-size: 1.5rem;
 }
+
+.main-home{
+    padding: 1rem;
+    background-color: white;
+    color: #333;
+    border-radius: 6px;
+}
+
+button {
+    font-family: 'Kanit', sans-serif;
+    font: bold;
+    font-size: 1.1rem;
+    background-color: #f66700;
+    color: white;
+    padding: .5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: .5rem;
+}
+ select, input,option {
+    box-shadow: 2px 2px 4px #333;
+    border-radius: 4px;
+    border: 1px solid #555;
+    padding: 0.5rem;
+ }
+
 
 
 .cards{
@@ -36,6 +71,7 @@ header h1 {
 
 .card-titles {
     display: none;
+
 
 }
 
@@ -69,6 +105,7 @@ margin: .5rem;
     border: 1px solid #555;
     padding: 0.2rem;
     text-align: center;
+    border-radius: 0;
 }
 
 .channel-card input:invalid{

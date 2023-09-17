@@ -9,11 +9,11 @@ function createCard(c, index) {
   cardHTML += `<label for"rxFreq${index}">Rx Freq</label>`;
   cardHTML += `<input class="ch-input" type="text" index=${index} id="rxFreq${index}" name="rxFreq" value="${c.rxFreq}" maxlength="9" minlength="3" pattern="[0-9]{3}[.]{0,1}[0-9]{0,5}"/>`;
   cardHTML += `<label for"rxCtsDcs${index}">Rx QT/DQT</label>`;
-  cardHTML += `<input class="ch-input" type="text" index=${index} id="rxCtsDcs${index}" name="rxCtsDcs" value="${c.strRxCtsDcs}" />`;
+  cardHTML += `<input class="ch-input" type="text" index=${index} id="rxCtsDcs${index}" name="rxCtsDcs" value="${c.strRxCtsDcs}" maxlength="5" minlength="2" pattern="^(\d{2,3}|\d{2,3}\.\d|D\d{3}[IN])$" />`;
   cardHTML += `<label for"txFreq${index}">Tx Freq</label>`;
   cardHTML += `<input class="ch-input" type="text" index=${index} id="txFreq${index}" name="txFreq" value="${c.txFreq}" maxlength="9" minlength="3" pattern="[0-9]{3}[.]{0,1}[0-9]{0,5}"/>`;
   cardHTML += `<label for"txCtsDcs${index}">Tx QT/DQT</label>`;
-  cardHTML += `<input class="ch-input" type="text" index=${index} id="txCtsDcs${index}" name="txCtsDcs" value="${c.strTxCtsDcs}" />`;
+  cardHTML += `<input class="ch-input" type="text" index=${index} id="txCtsDcs${index}" name="txCtsDcs" value="${c.strTxCtsDcs}" maxlength="5" minlength="2" pattern="[0-9]{2,3}|[0-9]{2,3}[.]{0,1}[0-9]{1,1}|[Dd]{1}[0-9]{3}[INin]{1}" />`;
   cardHTML += `<label for"txpower${index}">Power</label>`;
   cardHTML += `<select class="ch-select" index=${index} id="txpower${index}" name="txpower value ="${c.txPower}"><option value="0">High</option>
     <option value="1">Low</option></select>`;

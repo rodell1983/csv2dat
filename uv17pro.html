@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CSV2DAT - UV17-Pro</title>
+    <meta name="description" content="Our first page" />
+    <meta name="keywords" content="html tutorial template" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit&family=Oswald&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/small.css" />
+    <link rel="stylesheet" href="css/large.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="./images/logo.png" alt="CSV2DAT Logo" />
+      </div>
+      <div>
+        <h1>CSV-2-DAT  Online Radio Editing Software</h1>
+        <nav class="main-menu">
+          <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./uv17pro.html">Online Editor</a></li>
+            <li><a href="https://github.com/rodell1983/csv2dat" target="_blank">GitHub</a></li>
+          </ul>
+        </nav>
+        
+      </div>
+    </header>
+
+    <div class="page">
+      <main>
+        <div class="nav-bar">
+          
+        <nav class="tab">
+          <ul>
+            <li id="tab-global" class="tab">Global</li>
+            <li id="tab-zones" class="tab">Zones</li>
+            <li id="tab-channels" class="tab active">Channels</li>
+            <li id="tab-vfo" class="tab">VFO</li>
+            <li id="tab-dtmf" class="tab">DTMF</li>
+          </ul>
+          
+        </nav><nav class="nav-cmds">
+            <button id="import-data-btn">Import csv</button>
+            <button id="write-dat-btn">Create .dat File</button>
+          </nav>
+        </div>
+        
+        <div id="page-global" class="tab-page">
+          <div class="page-header">
+            <label for="radio-type"
+              >Model
+              <select
+                class="gv-select"
+                gvname="model"
+                name="radio-type"
+                id="radio-type"
+              >
+                <option value="UV17-Pro">UV17 Pro</option>
+                <option value="UV18-Pro">UV18 Pro</option>
+                <option value="UV19-Pro">UV19 Pro</option>
+                <option value="UV20-Pro">UV20 Pro</option>
+                <option value="UV21-Pro">UV21 Pro</option>
+                <option value="UV22-Pro">UV22 Pro</option>
+              </select></label
+            >
+          </div>
+          <div class="page-global-group">
+            <label for="global-sql"
+              >SQL
+              <select class="gv-select" id="global-sql">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select></label
+            >
+            <label for="global-tot"
+              >TOT
+              <select class="gv-select" id="global-tot">
+                <option value="0">OFF</option>
+                <option value="1">15s</option>
+                <option value="2">30s</option>
+                <option value="3">45s</option>
+                <option value="4">60s</option>
+                <option value="5">75s</option>
+                <option value="6">90s</option>
+                <option value="7">105s</option>
+                <option value="8">120s</option>
+                <option value="9">135s</option>
+                <option value="10">150s</option>
+                <option value="11">165s</option>
+                <option value="12">180s</option>
+              </select></label
+            >
+            <label for="global-savemode"
+              >Save mode
+              <select class="gv-select" id="global-savemode">
+                <option value="0">OFF</option>
+                <option value="1">ON</option>
+              </select></label
+            >
+            <label for="global-totalarm"
+              >Total Alarm
+              <select class="gv-select" id="global-totalarm">
+                <option value="0">OFF</option>
+                <option value="1">1s</option>
+                <option value="2">2s</option>
+                <option value="3">3s</option>
+                <option value="4">4s</option>
+                <option value="5">5s</option>
+                <option value="6">6s</option>
+                <option value="7">7s</option>
+                <option value="8">8s</option>
+                <option value="9">9s</option>
+                <option value="10">10s</option>
+              </select></label
+            >
+            <label for="global-dualstandby"
+              >Dual Standby
+              <select class="gv-select" id="global-dualstandby">
+                <option value="0">OFF</option>
+                <option value="1">ON</option>
+              </select></label
+            >
+            <label for="global-pilottone"
+              >Pilot Tone
+              <select class="gv-select" id="global-pilottone">
+                <option value="0">1000Hz</option>
+                <option value="1">1450Hz</option>
+                <option value="2">1750Hz</option>
+                <option value="3">2100Hz</option>
+              </select></label
+            >
+            <label for="global-sidetone"
+              >Side Tone
+              <select class="gv-select" id="global-sidetone">
+                <option value="0">OFF</option>
+                <option value="1">Side Key</option>
+                <option value="2">ID</option>
+                <option value="3">Side+ID</option>
+              </select></label
+            >
+            <label for="global-tailclear"
+              >Tail Clear
+              <select class="gv-select" id="global-tailclear">
+                <option value="0">OFF</option>
+                <option value="1">ON</option>
+              </select></label
+            >
+            <label for="global-powerdisp"
+              >Power on Display
+              <select class="gv-select" id="global-powerdisp">
+                <option value="0">LOGO</option>
+                <option value="1">Batt Voltage</option>
+              </select></label
+            >
+            <label for="global-beep"
+              >Beep
+              <select class="gv-select" id="global-beep">
+                <option value="0">OFF</option>
+                <option value="1">BEEP</option>
+                <option value="2">Voice</option>
+                <option value="3">Both</option>
+              </select></label
+            >
+            <label for="global-roger"
+              >Roger
+              <select class="gv-select" id="global-roger">
+                <option value="0">OFF</option>
+                <option value="1">ON</option>
+              </select></label
+            >
+          </div>
+          <div class="page-global-group">
+            <label for="global-lang"
+              >Language
+              <select class="gv-select" id="global-lang">
+                <option value="0">English</option>
+                <option value="1">Chinese</option>
+              </select></label
+            >
+            <label for="global-scanmode"
+              >Scan Mode
+              <select class="gv-select" id="global-scanmode">
+                <option value="0">Time</option>
+                <option value="1">Carrier</option>
+                <option value="2">Search</option>
+              </select></label
+            >
+            <label for="global-alarmmode"
+              >Alarm Mode
+              <select class="gv-select" id="global-alarmmode">
+                <option value="0">Local</option>
+                <option value="1">Send Tone</option>
+                <option value="2">Send Code</option>
+              </select></label
+            >
+            <label for="global-soundalarm"
+              >Sound Alarm
+              <select class="gv-select" id="global-soundalarm">
+                <option value="0">OFF</option>
+                <option value="1">ON</option>
+              </select></label
+            >
+            <label for="global-keylock"
+              >Key Lock
+              <select class="gv-select" id="global-keylock">
+                <option value="0">OFF</option>
+                <option value="1">ON</option>
+              </select></label
+            >
+            <label for="global-fm"
+              >FM
+              <select class="gv-select" id="global-fm">
+                <option value="0">Enable</option>
+                <option value="1">Disable</option>
+              </select></label
+            >
+            <label for="global-keyautolock"
+              >Key Auto Lock
+              <select class="gv-select" id="global-keyautolock">
+                <option value="0">OFF</option>
+                <option value="1">ON</option>
+              </select></label
+            >
+            <label for="global-menuquittimer"
+              >Menu Quit Timer
+              <select class="gv-select" id="global-menuquittimer">
+                <option value="0">5s</option>
+                <option value="1">10s</option>
+                <option value="2">15s</option>
+                <option value="3">20s</option>
+                <option value="4">25s</option>
+                <option value="5">30s</option>
+                <option value="6">35s</option>
+                <option value="7">40s</option>
+                <option value="8">45s</option>
+                <option value="9">50s</option>
+                <option value="10">55s</option>
+                <option value="11">60s</option>
+              </select></label
+            >
+            <label for="global-backlighttimer"
+              >Back Light Timer
+              <select class="gv-select" id="global-backlighttimer">
+                <option value="0">Light</option>
+                <option value="1">5s</option>
+                <option value="2">10s</option>
+                <option value="3">15s</option>
+                <option value="4">20s</option>
+              </select></label
+            >
+            <label for="global-sendiddelay"
+              >Send ID Delay
+              <select class="gv-select" id="global-sendiddelay">
+                <option value="0">0</option>
+                <option value="1">100ms</option>
+                <option value="2">200ms</option>
+                <option value="3">300ms</option>
+                <option value="4">400ms</option>
+                <option value="5">500ms</option>
+                <option value="6">600ms</option>
+                <option value="7">700ms</option>
+                <option value="8">800ms</option>
+                <option value="9">900ms</option>
+                <option value="10">1100ms</option>
+                <option value="11">1200ms</option>
+                <option value="12">1300ms</option>
+                <option value="13">1400ms</option>
+                <option value="14">1500ms</option>
+              </select></label
+            >
+            <label for="global-qtsavemode"
+              >QT Save Mode
+              <select class="gv-select" id="global-qtsavemode">
+                <option value="0">Both</option>
+                <option value="1">Rx</option>
+                <option value="2">Tx</option>
+              </select></label
+            >
+            <label for="global-key2short"
+              >SKey2 Short
+              <select class="gv-select" id="global-key2short">
+                <option value="0">FM</option>
+                <option value="1">Scan</option>
+                <option value="2">Search</option>
+                <option value="3">VOX</option>
+              </select></label
+            >
+          </div>
+          <div class="page-global-group">
+            <label for="global-chadisplay"
+              >CH. A Display Type
+              <select class="gv-select" id="global-chadisplay">
+                <option value="0">Name</option>
+                <option value="1">Frequency</option>
+                <option value="2">CH Num</option>
+              </select></label
+            >
+            <label for="global-workmodea"
+              >Work Mode A
+              <select class="gv-select" id="global-workmodea">
+                <option value="0">VFO Mode</option>
+                <option value="1">CH Mode</option>
+              </select></label
+            >
+            <label for="global-chbdisplay"
+              >CH. B Display Type
+              <select class="gv-select" id="global-chbdisplay">
+                <option value="0">Name</option>
+                <option value="1">Frequency</option>
+                <option value="2">CH Num</option>
+              </select></label
+            >
+            <label for="global-workmodeb"
+              >Work Mode B
+              <select class="gv-select" id="global-workmodeb">
+                <option value="0">VFO Mode</option>
+                <option value="1">CH Mode</option>
+              </select></label
+            >
+            <label for="global-rpttailclear"
+              >Rpt Tail Clear
+              <select class="gv-select" id="global-rpttailclear">
+                <option value="0">0</option>
+                <option value="1">100ms</option>
+                <option value="2">200ms</option>
+                <option value="3">300ms</option>
+                <option value="4">400ms</option>
+                <option value="5">500ms</option>
+                <option value="6">600ms</option>
+                <option value="7">700ms</option>
+                <option value="8">800ms</option>
+                <option value="9">900ms</option>
+                <option value="10">1000ms</option>
+              </select></label
+            ><label for="global-rpttaildelay"
+              >Rpt Tail delay
+              <select class="gv-select" id="global-rpttaildelay">
+                <option value="0">0</option>
+                <option value="1">100ms</option>
+                <option value="2">200ms</option>
+                <option value="3">300ms</option>
+                <option value="4">400ms</option>
+                <option value="5">500ms</option>
+                <option value="6">600ms</option>
+                <option value="7">700ms</option>
+                <option value="8">800ms</option>
+                <option value="9">900ms</option>
+                <option value="10">1000ms</option>
+              </select></label
+            >
+            <label for="global-enablemenurst"
+              >Enable Menu Reset
+              <select class="gv-select" id="global-enablemenurst">
+                <option value="0">OFF</option>
+                <option value="1">ON</option>
+              </select></label
+            >
+            <label for="global-voxswitch"
+              >VOX Switch
+              <select class="gv-select" id="global-voxswitch">
+                <option value="0">OFF</option>
+                <option value="1">ON</option>
+              </select></label
+            ><label for="global-voxlv"
+              >VOX Level
+              <select class="gv-select" id="global-voxlv">
+                <option value="0">1</option>
+                <option value="1">2</option>
+                <option value="2">3</option>
+                <option value="3">4</option>
+                <option value="4">5</option>
+                <option value="5">6</option>
+                <option value="6">7</option>
+                <option value="7">8</option>
+                <option value="8">9</option>
+              </select></label
+            ><label for="global-voxdlytime"
+              >VOX Delay Time
+              <select class="gv-select" id="global-voxdlytime">
+                <option value="0">.5s</option>
+                <option value="1">.6s</option>
+                <option value="2">.7s</option>
+                <option value="3">.8s</option>
+                <option value="4">.9s</option>
+                <option value="5">1.0s</option>
+                <option value="6">1.1s</option>
+                <option value="7">1.2s</option>
+                <option value="8">1.3s</option>
+                <option value="9">1.4s</option>
+                <option value="10">1.5s</option>
+                <option value="11">1.6s</option>
+                <option value="12">1.7s</option>
+                <option value="13">1.8s</option>
+                <option value="14">1.9s</option>
+                <option value="15">2.0s</option>
+              </select></label
+            ><label for="global-gpsswitch"
+              >GPS Switch
+              <select class="gv-select" id="global-gpsswitch">
+                <option value="0">OFF</option>
+                <option value="1">ON</option>
+              </select></label
+            ><label for="global-gpsmode"
+              >GPS Mode
+              <select class="gv-select" id="global-gpsmode">
+                <option value="0">GPS</option>
+                <option value="1">Beidou</option>
+                <option value="2">GPS+Beidou</option>
+              </select></label
+            >
+          </div>
+        </div>
+        <div id="page-zones" class="tab-page">
+          <div class="page-header"></div>
+          <div class="zone-names">
+            <label
+              >Zone 1:<input class="zone-name" id="zones-name1" type="text"
+            /></label>
+            <label
+              >Zone 2:<input class="zone-name" id="zones-name2" type="text"
+            /></label>
+            <label
+              >Zone 3:<input class="zone-name" id="zones-name3" type="text"
+            /></label>
+            <label
+              >Zone 4:<input class="zone-name" id="zones-name4" type="text"
+            /></label>
+            <label
+              >Zone 5:<input class="zone-name" id="zones-name5" type="text"
+            /></label>
+            <label
+              >Zone 6:<input class="zone-name" id="zones-name6" type="text"
+            /></label>
+            <label
+              >Zone 7:<input class="zone-name" id="zones-name7" type="text"
+            /></label>
+            <label
+              >Zone 8:<input class="zone-name" id="zones-name8" type="text"
+            /></label>
+            <label
+              >Zone 9:<input class="zone-name" id="zones-name9" type="text"
+            /></label>
+            <label
+              >Zone 10:<input class="zone-name" id="zones-name10" type="text"
+            /></label>
+          </div>
+        </div>
+        <div id="page-channels" class="tab-page">
+          <div class="page-header">
+            <div class="channel-options">
+              <fieldset>
+                <legend>Zones</legend>
+
+                <select name="zone-list" id="zone-list">
+                  <option value="0">Zone 1</option>
+                  <option value="1">Zone 2</option>
+                  <option value="2">Zone 3</option>
+                  <option value="3">Zone 4</option>
+                  <option value="4">Zone 5</option>
+                  <option value="5">Zone 6</option>
+                  <option value="6">Zone 7</option>
+                  <option value="7">Zone 8</option>
+                  <option value="8">Zone 9</option>
+                  <option value="9">Zone 10</option>
+                </select>
+                <input id="channel-opt-zonename" />
+                <button id="channel-opt-first">&lt&lt</button>
+                <button id="channel-opt-prev">&lt</button>
+                <button id="channel-opt-next">&gt</button>
+                <button id="channel-opt-last">&gt&gt</button>
+              </fieldset>
+              <fieldset>
+                <legend>Edit Channels</legend>
+                <button id="channel-opt-add">Add</button>
+                <button id="channel-opt-del">Del</button>
+                <button id="channel-opt-move">Move</button>
+              </fieldset>
+            </div>
+          </div>
+
+          <div class="cards">
+            <div class="card-titles">
+              <span>#</span>
+              <span>Rx Freq</span>
+              <span>Rx QT/DQT</span>
+              <span>Tx Freq</span>
+              <span>Tx QT/DQT</span>
+              <span>Power</span>
+              <span>W/N</span>
+              <span>Scan</span>
+              <span>SQ Mode</span>
+              <span>PTT-ID</span>
+              <span>Signaling</span>
+              <span>BCL</span>
+              <span>FHSS</span>
+              <span>Name</span>
+            </div>
+
+            <div class="channel-cards"></div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+  <script type="module" src="./modules/io.js"></script>
+  <script type="module" src="./modules/ui.js"></script>
+  <script type="module" src="./modules/main.js"></script>
+</html>

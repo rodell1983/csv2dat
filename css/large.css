@@ -6,7 +6,9 @@
     .card-titles {
         display: grid;
         font-weight: bold;
-        background-color: white;
+        background-color: #333;
+        color: white;
+        text-align: center;
         justify-self: center;
     
     }
@@ -52,7 +54,22 @@
     }
     
     /* Nav */
-.tab ul {
+
+    .nav-bar{
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+    .nav-cmds{
+        display: flex;
+        justify-content: end;
+    }
+    .tab {
+        position: relative;
+    }
+.tab ul{
+    position: absolute;
+    bottom: 0;
+    left: 0;
     display: flex;
     justify-content: left;
     list-style-type: none;
@@ -62,8 +79,27 @@
     width: calc(100% - 1rem);
 }
 
+.main-menu ul{
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    margin: 0;
+    padding: .5rem .5rem 0 0;
+    padding-bottom: 0;
+}
 
-.tab ul li {
+.main-menu ul li{
+ 
+    padding: .5rem;
+    margin-right: 2px;
+    font-size: 1.2rem;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.tab ul li{
     background-color: lightgray;
     padding: .5rem;
     margin-right: 2px;
