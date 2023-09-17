@@ -69,7 +69,9 @@ export function writeFile(buffers, fileName) {
   a.click();
 }
 
+
+
 document
-  .getElementById("import-data-btn")
+  .getElementById("import-dat-btn")
   .addEventListener("click", importData);
 document.getElementById("write-dat-btn").addEventListener("click", writeDAT);

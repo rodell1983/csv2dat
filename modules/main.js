@@ -6,30 +6,34 @@ import * as Util from "./util.js";
 
 let radioProgram = new UV17Pro.RadioProgram();
 
-export function getRadioProgram(){
+export function getRadioProgram() {
   return radioProgram;
 }
 
+export function clearRadioProgram() {
+  radioProgram = new UV17Pro.RadioProgram();
+}
+
 export function loadRPFromChirp(indexes, list) {
-  if(!validateChirpCsv(indexes,list)){
+  if (!validateChirpCsv(indexes, list)) {
     return false;
   }
   radioProgram.clearZones();
 
-  for (var i = 0; i < list.length-1; i++) {
+  for (var i = 0; i < list.length - 1; i++) {
     let cc = new Chirp.ChirpChannel(indexes, list[i]);
     let c = new UV17Pro.UV17Channel();
     c.loadFromChirpChannel(cc);
     let zIndex = Math.trunc(i / 100);
     radioProgram.getZone(zIndex).addChannel(c);
   }
-  UI.populateChannelCards(radioProgram,0);
+  UI.populateChannelCards(radioProgram, 0);
 }
 
-function validateChirpCsv(indexes,list){
-  if(indexes == null || list == null){
+function validateChirpCsv(indexes, list) {
+  if (indexes == null || list == null) {
     return false;
-  }else{
+  } else {
     return true;
   }
 }
@@ -76,29 +80,37 @@ function channelsTabClick() {
   tab.classList.add("active");
 }
 
-function deleteChannels(){
+function deleteChannels() {
   let zone = parseInt(document.getElementById("zone-list").value);
   let channels = document.getElementsByClassName("ch-index");
 
-  for (var i = channels.length -1; i >=0 ; i-- ){
-
-    if(channels[i].style.backgroundColor === "red"){
+  for (var i = channels.length - 1; i >= 0; i--) {
+    if (channels[i].style.backgroundColor === "red") {
       radioProgram.getZone(zone).removeChannel(i);
     }
-
   }
 
   UI.populateChannelCards(radioProgram, zone);
 }
 
-
-
-
+export function newProgram() {
+  let res = confirm(
+    "Are you sure you want to create a new program? This will erase all data."
+  );
+  if (res) {
+    clearRadioProgram();
+    UI.populateChannelCards(radioProgram, 0);
+    alert("New program loaded.");
+  }
+}
 
 //Add event listeners
 
 document.getElementById("zone-list").addEventListener("change", zoneChange);
-document.getElementById("channel-opt-del").addEventListener("click", deleteChannels);
+document
+  .getElementById("channel-opt-del")
+  .addEventListener("click", deleteChannels);
+document.getElementById("new-dat-btn").addEventListener("click", newProgram);
 
 //Tab pages
 document.getElementById("tab-global").addEventListener("click", globalTabClick);
@@ -114,9 +126,7 @@ loadRPFromChirp(Chirp.getcsvIndexes(), Chirp.getcsvList());
 const dict = radioProgram.globalValues;
 for (const key in dict) {
   let e = document.getElementById(`global-${key}`);
-  if(e !== null){
+  if (e !== null) {
     e.value = dict[key];
   }
-
-  
 }
