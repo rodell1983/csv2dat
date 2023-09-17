@@ -79,6 +79,20 @@ function channelsTabClick() {
   page.style.display = "grid";
   tab.classList.add("active");
 }
+function vfoTabClick() {
+  let page = document.getElementById("page-vfo");
+  let tab = document.getElementById("tab-vfo");
+  clearPages();
+  page.style.display = "grid";
+  tab.classList.add("active");
+}
+function dtmfTabClick() {
+  let page = document.getElementById("page-dtmf");
+  let tab = document.getElementById("tab-dtmf");
+  clearPages();
+  page.style.display = "grid";
+  tab.classList.add("active");
+}
 
 function deleteChannels() {
   let zone = parseInt(document.getElementById("zone-list").value);
@@ -149,6 +163,8 @@ document.getElementById("tab-zones").addEventListener("click", zonesTabClick);
 document
   .getElementById("tab-channels")
   .addEventListener("click", channelsTabClick);
+  document.getElementById("tab-vfo").addEventListener("click", vfoTabClick);
+  document.getElementById("tab-dtmf").addEventListener("click", dtmfTabClick);
 
 clearPages();
 channelsTabClick();
