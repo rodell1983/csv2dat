@@ -437,7 +437,7 @@ export class RadioProgram {
     sidetone: 0,
     scanmode: 1,
     voicesw: 1,
-    lang: 1,
+    lang: 0,
     sendiddelay: 6,
     chadisplay: 0,
     chbdisplay: 0,
