@@ -209,6 +209,7 @@ option {
     display: grid;
     justify-items: right;
     grid-gap: .25rem;
+    padding: .5rem;
 }
 
 .page-header {
@@ -224,10 +225,11 @@ option {
     justify-self: center;
 }
 
-#page-global {
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-items: center;
+.page-global-groups {
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: right;
+    justify-self: center;
 }
 
 #page-zones input {
@@ -261,4 +263,8 @@ option {
     font-weight: bold;
 
     cursor: pointer;
+}
+
+.channel-card input:invalid {
+    background-color: lightsalmon;
 }

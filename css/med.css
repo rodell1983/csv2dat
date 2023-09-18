@@ -1,67 +1,21 @@
-@media only screen and (min-width: 75em) {
+@media only screen and (min-width: 40em) {
 
     .logo span {
         font-size: 2rem;
     }
 
-    .card-titles {
-        display: grid;
-        font-weight: bold;
-        background-color: #333;
-        color: white;
-        text-align: center;
-        justify-self: center;
-
-    }
-
-    .card-titles span {
-        border: 1px solid #555;
-    }
-
-    .channel-card,
-    .card-titles {
-
-        grid-template-columns: 35px 100px 70px 100px 70px 70px 70px 70px 100px 70px 70px 70px 70px 200px;
-
-
-    }
-
-    .channel-card {
-        display: grid;
-        justify-self: center;
-        margin: 0;
-        padding: 0;
-        border-radius: 0;
-
-        box-shadow: none;
-
-
-    }
-
-    .channel-card label {
-        display: none;
-    }
-
-    .channel-card:nth-child(even) input,
-    .channel-card:nth-child(even) select {
-        background-color: lightgray;
-    }
-
-
-    .channel-cards {
-        display: grid;
-        justify-self: center;
-
-
-    }
 
     /* Nav */
 
     .nav-bar {
         display: grid;
-        grid-template-columns: auto auto;
+        grid-template-columns: 330px auto;
     }
 
+    .nav-cmds {
+        display: flex;
+        justify-content: end;
+    }
 
     .tab {
         position: relative;
@@ -106,6 +60,12 @@
 
     }
 
+
+    .nav-cmds{
+        display: flex;
+    justify-content: end;
+    flex-wrap: wrap;
+    }
 
     .channel-card input:invalid {
         background-color: lightsalmon;
