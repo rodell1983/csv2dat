@@ -138,7 +138,9 @@ option {
 }
 
 
-
+#channel-opt-zonename{
+    width: 120px;
+}
 
 option {
     background-color: white;
