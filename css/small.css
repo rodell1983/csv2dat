@@ -3,6 +3,9 @@ body {
     font-family: 'Kanit', sans-serif;
 }
 
+main{
+    display: grid;
+}
 header {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -51,6 +54,7 @@ a:hover {
     vertical-align: middle;
     width: 100%;
     text-align: center;
+    grid-row: 2;
 }
 
 
@@ -222,7 +226,8 @@ flex-wrap: wrap;
     display: grid;
     justify-items: right;
     grid-gap: .25rem;
-    padding: .5rem;
+    padding: 0.2rem;
+    width: 320px;
 }
 
 .page-header {
