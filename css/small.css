@@ -213,6 +213,7 @@ flex-wrap: wrap;
 
 .channel-options {
     display: flex;
+    flex-wrap: wrap;
     padding: .5rem;
     background-color: inherit;
 }
