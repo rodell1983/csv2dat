@@ -163,7 +163,7 @@ option {
 justify-content: center;
 flex-wrap: wrap;
 }
-.tab ul {
+.tabs ul {
     /* display: grid; */
     justify-content: center;
     list-style-type: none;
@@ -174,7 +174,7 @@ flex-wrap: wrap;
 }
 
 
-.tab ul li {
+.tab {
     background-color: #333;
     padding: 0.5rem;
     /* margin-right: 2px; */
@@ -189,16 +189,9 @@ flex-wrap: wrap;
     text-align: center;
 }
 
-.active {
 
-    background-color: white;
-    color: #333;
-}
 
-.tab ul li:hover {
-    background-color: #eee;
-    color: black;
-}
+
 
 .ch-index {
     cursor: pointer;
@@ -295,4 +288,9 @@ flex-wrap: wrap;
 
 .channel-card input:invalid {
     background-color: lightsalmon;
+}
+
+.tab:hover, .active {
+    background-color: #FFF;
+    color: black;
 }

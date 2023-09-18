@@ -17,11 +17,11 @@
         justify-content: end;
     }
 
-    .tab {
+    .tabs {
         position: relative;
     }
 
-    .tab ul {
+    .tabs ul {
         position: absolute;
         bottom: 0;
         left: 0;
@@ -34,10 +34,10 @@
         width: calc(100% - 1rem);
     }
 
-  
 
 
-    .tab ul li {
+
+    .tab {
         background-color: lightgray;
         padding: .5rem;
         margin-right: 2px;
@@ -50,27 +50,34 @@
         cursor: pointer;
     }
 
-    .tab ul li:hover {
+    .tab:hover,
+    .active {
         transform: scale(1.1);
+        background-color: #fff;
+        color: black;
+
+
     }
 
+
     .channel-card {
- 
+
         width: max-content;
-    
-    
+
+
     }
 
     .download-span {
         grid-row: 1;
     }
 
-    .nav-cmds{
-    justify-content: end;
- 
+    .nav-cmds {
+        justify-content: end;
+
     }
 
     .channel-card input:invalid {
         background-color: lightsalmon;
     }
+
 }
