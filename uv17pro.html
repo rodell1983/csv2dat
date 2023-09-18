@@ -6,7 +6,7 @@
       name="description"
       content="Online radio editor for Baofeng UV Pro radios"
     />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -43,6 +43,13 @@
 
     <div class="page">
       <main>
+        <span class="download-span"
+          ><a
+            class="link-light"
+            href="https://www.miklor.com/RadioSoftware/Baofeng%20UV-PROs%20v124.zip"
+            >Download CPS Software</a
+          ></span
+        >
         <div class="nav-bar">
           <nav class="tab">
             <ul>
@@ -55,14 +62,6 @@
           </nav>
 
           <nav class="nav-cmds">
-            <span class="download-span"
-              ><a
-                class="link-light"
-                href="https://www.miklor.com/RadioSoftware/Baofeng%20UV-PROs%20v124.zip"
-                >Download CPS Software</a
-              ></span
-            >
-
             <button id="new-dat-btn">New</button>
             <button id="import-dat-btn">Import Chirp .csv</button>
             <button id="write-dat-btn">Create .dat</button>
@@ -475,24 +474,27 @@
             <div class="channel-options">
               <fieldset>
                 <legend>Zones</legend>
-
-                <select name="zone-list" id="zone-list">
-                  <option value="0">Zone 1</option>
-                  <option value="1">Zone 2</option>
-                  <option value="2">Zone 3</option>
-                  <option value="3">Zone 4</option>
-                  <option value="4">Zone 5</option>
-                  <option value="5">Zone 6</option>
-                  <option value="6">Zone 7</option>
-                  <option value="7">Zone 8</option>
-                  <option value="8">Zone 9</option>
-                  <option value="9">Zone 10</option>
-                </select>
-                <input id="channel-opt-zonename" />
-                <button id="channel-opt-first">&lt;&lt;</button>
-                <button id="channel-opt-prev">&lt;</button>
-                <button id="channel-opt-next">&gt;</button>
-                <button id="channel-opt-last">&gt;&gt;</button>
+                <div class="flex-cont">
+                  <select name="zone-list" id="zone-list">
+                    <option value="0">Zone 1</option>
+                    <option value="1">Zone 2</option>
+                    <option value="2">Zone 3</option>
+                    <option value="3">Zone 4</option>
+                    <option value="4">Zone 5</option>
+                    <option value="5">Zone 6</option>
+                    <option value="6">Zone 7</option>
+                    <option value="7">Zone 8</option>
+                    <option value="8">Zone 9</option>
+                    <option value="9">Zone 10</option>
+                  </select>
+                  <input id="channel-opt-zonename" />
+                </div>
+                <div class="flex-cont">
+                  <button id="channel-opt-first">&lt;&lt;</button>
+                  <button id="channel-opt-prev">&lt;</button>
+                  <button id="channel-opt-next">&gt;</button>
+                  <button id="channel-opt-last">&gt;&gt;</button>
+                </div>
               </fieldset>
               <fieldset>
                 <legend>Edit Channels</legend>

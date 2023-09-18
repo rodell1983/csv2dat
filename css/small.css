@@ -54,8 +54,16 @@ a:hover {
     display: inline-block;
     line-height: 60px;
     vertical-align: middle;
+    width: 100%;
+    text-align: center;
+}
 }
 
+.tab-page {
+
+    background-color: white;
+
+}
 .main-home {
     padding: 1rem;
     background-color: white;
@@ -69,10 +77,10 @@ button {
     font-size: 1.1rem;
     background-color: #f66700;
     color: white;
-    padding: .5rem;
+    padding: .1rem .5rem .1rem .5rem;
     border-radius: 4px;
     cursor: pointer;
-    margin: .5rem;
+    margin: 1px;
 }
 
 select,
@@ -105,8 +113,10 @@ option {
     margin: .5rem;
     padding: .5rem;
     border-radius: 5px;
-    background-color: white;
+    background-color: lightgray;
     box-shadow: 4px 4px 4px #333;
+    border: 1px solid #333;
+    width: 100%;
 
 
 }
@@ -146,6 +156,12 @@ option {
 }
 
 /* Nav */
+
+.nav-cmds{
+    display: flex;
+justify-content: center;
+flex-wrap: wrap;
+}
 .tab ul {
     /* display: grid; */
     justify-content: center;
@@ -263,6 +279,11 @@ option {
     font-weight: bold;
 
     cursor: pointer;
+}
+
+.flex-cont{
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .channel-card input:invalid {

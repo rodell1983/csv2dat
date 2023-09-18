@@ -54,17 +54,17 @@
         transform: scale(1.1);
     }
 
-    .tab-page {
-
-        background-color: white;
-
+    .channel-card {
+ 
+        width: max-content;
+    
+    
     }
 
 
     .nav-cmds{
-        display: flex;
     justify-content: end;
-    flex-wrap: wrap;
+ 
     }
 
     .channel-card input:invalid {
