@@ -109,29 +109,29 @@ function deleteChannels() {
 
   UI.populateChannelCards(radioProgram, zone);
 
-  if(delCount > 0){
-    let c = '';
-    if(delCount == 1){
-      c = 'Channel';
-    }else{
-      c = 'Channels';
+  if (delCount > 0) {
+    let c = "";
+    if (delCount == 1) {
+      c = "Channel";
+    } else {
+      c = "Channels";
     }
     alert(`${delCount} ${c} Deleted`);
-  }else{
-    alert('No channels selected');
+  } else {
+    alert("No channels selected");
   }
 }
 
-function addChannel(){
+function addChannel() {
   let zone = parseInt(document.getElementById("zone-list").value);
   let rpZone = radioProgram.getZone(zone);
-  if (rpZone.getChannelCount() >= rpZone.maxChannels){
+  if (rpZone.getChannelCount() >= rpZone.maxChannels) {
     alert(`No available channel slots for zone ${rpZone.getName()}`);
-  }else{
+  } else {
     rpZone.addChannel(new UV17Pro.UV17Channel());
     UI.populateChannelCards(radioProgram, zone);
     var height = document.body.scrollHeight;
-    window.scroll(0 , height);
+    window.scroll(0, height);
   }
 }
 
@@ -142,7 +142,31 @@ export function newProgram() {
   if (res) {
     clearRadioProgram();
     UI.populateChannelCards(radioProgram, 0);
+    storeGlobalVals(radioProgram);
     alert("New program loaded.");
+  }
+}
+
+export function storeGlobalVals() {
+  let values = radioProgram.globalValues;
+  localStorage.globalValues = JSON.stringify(values);
+}
+
+export function getGlobalVals() {
+  return JSON.parse(localStorage.getItem("globalValues"));
+}
+
+export function loadGlobalVals() {
+  let gvs = getGlobalVals();
+  if (gvs == null) {
+    gvs = radioProgram.globalValues;
+  }
+
+  for (const key in gvs) {
+    let e = document.getElementById(`global-${key}`);
+    if (e !== null) {
+      e.value = gvs[key];
+    }
   }
 }
 
@@ -152,7 +176,7 @@ document.getElementById("zone-list").addEventListener("change", zoneChange);
 document
   .getElementById("channel-opt-del")
   .addEventListener("click", deleteChannels);
-  document
+document
   .getElementById("channel-opt-add")
   .addEventListener("click", addChannel);
 document.getElementById("new-dat-btn").addEventListener("click", newProgram);
@@ -163,17 +187,18 @@ document.getElementById("tab-zones").addEventListener("click", zonesTabClick);
 document
   .getElementById("tab-channels")
   .addEventListener("click", channelsTabClick);
-  document.getElementById("tab-vfo").addEventListener("click", vfoTabClick);
-  document.getElementById("tab-dtmf").addEventListener("click", dtmfTabClick);
+document.getElementById("tab-vfo").addEventListener("click", vfoTabClick);
+document.getElementById("tab-dtmf").addEventListener("click", dtmfTabClick);
 
 clearPages();
 channelsTabClick();
 
 loadRPFromChirp(Chirp.getcsvIndexes(), Chirp.getcsvList());
-const dict = radioProgram.globalValues;
-for (const key in dict) {
-  let e = document.getElementById(`global-${key}`);
-  if (e !== null) {
-    e.value = dict[key];
-  }
+loadGlobalVals();
+
+let gvs = getGlobalVals();
+if (gvs != null) {
+  radioProgram.globalValues = gvs;
+} else {
+  storeGlobalVals();
 }

@@ -129,12 +129,13 @@ function updateValue(e) {
 }
 
 function updateGV(e) {
-
   let el = e.target;
   let gv = el.getAttribute('id');
   gv = gv.replace('global-','');
 
   Main.getRadioProgram().setGlobalValue(gv,el.value)
+  Main.storeGlobalVals();
+  
 
   
 }

@@ -687,3 +687,4 @@ function bytesFromString(str, type = "name", index) {
     return strBytes;
   }
 }
+
