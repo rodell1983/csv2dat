@@ -36,14 +36,9 @@ a:hover {
     text-decoration: underline
 }
 
-.logo {
-    display: grid;
-    grid-template-columns: 100px auto;
-    align-items: center;
-}
-
 .logo img {
     width: 100px;
+    padding-right: 1rem;
 }
 
 .logo span {
@@ -57,7 +52,7 @@ a:hover {
     width: 100%;
     text-align: center;
 }
-}
+
 
 .tab-page {
 
@@ -260,6 +255,10 @@ flex-wrap: wrap;
 
 .channel-card input:invalid {
     background-color: lightsalmon;
+}
+
+.main-menu{
+    grid-column: 1/-1;
 }
 
 .main-menu ul {
