@@ -262,6 +262,7 @@ option {
     flex-wrap: wrap;
     justify-items: right;
     justify-self: center;
+    justify-content: center;
 }
 
 .channel-card input:invalid {
@@ -279,5 +280,12 @@ option {
 }
 
 label {
+    margin: .5rem;
+}
+
+fieldset{
+    background-color: lightgray;
+    border-radius: 4px;
+    box-shadow: 2px 2px 2px #333;
     margin: .5rem;
 }
