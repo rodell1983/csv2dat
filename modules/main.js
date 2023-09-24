@@ -170,6 +170,58 @@ export function loadGlobalVals() {
   }
 }
 
+export function loadVFOVals(){
+  let vfoA = getRadioProgram().vfoA;
+
+  for (const key in vfoA) {
+    let e = document.getElementById(`vfoA-${key}`);
+    if (e !== null) {
+      e.value = vfoA[key];
+    }
+  }
+  let vfoB = getRadioProgram().vfoB;
+
+  for (const key in vfoB) {
+    let e = document.getElementById(`vfoB-${key}`);
+    if (e !== null) {
+      e.value = vfoB[key];
+    }
+  }
+
+  let vfoOpt = getRadioProgram().vfoOpts;
+
+  for (const key in vfoOpt) {
+    let e = document.getElementById(`vfo-opt-${key}`);
+    if (e !== null) {
+      e.value = vfoOpt[key];
+    }
+  }
+}
+
+export function loadDTMFVals(){
+  let dtmfContacts = getRadioProgram().dtmfContacts;
+  for(var i = 1; i <= 20; i++){
+
+    let eCode = document.getElementById(`dtmf-contact-code-${i}`);
+    let eName = document.getElementById(`dtmf-contact-name-${i}`);
+    if(eCode !== null){
+      eCode.value = dtmfContacts[i-1]['code'];
+    }
+    if(eName !== null){
+      eName.value = dtmfContacts[i-1]['name'];
+    }
+  }
+
+  let dtmfGlobal = getRadioProgram().dtmfGlobal;
+  for (const key in dtmfGlobal) {
+    let e = document.getElementById(`dtmf-global-${key}`);
+    if (e !== null) {
+      e.value = dtmfGlobal[key];
+    }
+  }
+
+}
+
 //Add event listeners
 
 document.getElementById("zone-list").addEventListener("change", zoneChange);
@@ -195,6 +247,8 @@ channelsTabClick();
 
 loadRPFromChirp(Chirp.getcsvIndexes(), Chirp.getcsvList());
 loadGlobalVals();
+loadVFOVals();
+loadDTMFVals();
 
 let gvs = getGlobalVals();
 if (gvs != null) {

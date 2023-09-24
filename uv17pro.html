@@ -61,7 +61,7 @@
             </ul>
           </nav>
 
-          <nav class="nav-cmds">
+          <nav class="nav-cmds flex-cont">
             <button id="new-dat-btn">New</button>
             <button id="import-dat-btn">Import Chirp .csv</button>
             <button id="write-dat-btn">Create .dat</button>
@@ -82,7 +82,7 @@
               </select></label
             >
           </div>
-          <div class="page-global-groups">
+          <div class="page-global-groups flex-cont">
             <div class="page-global-group">
               <label for="global-sql"
                 >SQL
@@ -436,7 +436,7 @@
         </div>
         <div id="page-zones" class="tab-page">
           <div class="page-header"><h2>Zone Names</h2></div>
-          <div class="zone-names">
+          <div class="zone-names flex-cont">
             <label
               >Zone 1:<input class="zone-name" id="zones-name1" type="text"
             /></label>
@@ -522,18 +522,40 @@
               <span>Name</span>
             </div>
 
-            <div class="channel-cards"></div>
+            <div class="channel-cards flex-cont"></div>
           </div>
         </div>
 
         <div id="page-vfo" class="tab-page">
           <div class="page-header">
-            <h2>Feature Coming Soon</h2>
+            <h2>VFO</h2>
+          </div>
+          <div class="flex-cont">
+            <fieldset>
+                <legend>VFO A</legend>
+                <div id="vfoA" class="vfo"></div>
+                
+            </fieldset>
+            <fieldset>
+                <legend>VFO B</legend>
+                <div id="vfoB" class="vfo"></div>
+                
+            </fieldset>
+            
+                <div id="vfoOpts"></div>
+                
+            
           </div>
         </div>
         <div id="page-dtmf" class="tab-page">
           <div class="page-header">
-            <h2>Feature Coming Soon</h2>
+            <h2>DTMF</h2>
+          </div>
+          <div id="dtmf-contacts" class="flex-cont">
+            
+          </div>
+          <div id="dtmf-global" class="flex-cont">
+            
           </div>
         </div>
       </main>

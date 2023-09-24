@@ -121,16 +121,6 @@ option {
 }
 
 
-.channel-cards {
-    display: flex;
-    justify-self: center;
-    justify-content: space-around;
-    flex-wrap: wrap;
-
-
-
-}
-
 .channel-card input,
 .channel-card option,
 .channel-card select,
@@ -158,11 +148,6 @@ option {
 
 /* Nav */
 
-.nav-cmds{
-    display: flex;
-justify-content: center;
-flex-wrap: wrap;
-}
 .tabs ul {
     /* display: grid; */
     justify-content: center;
@@ -237,22 +222,11 @@ flex-wrap: wrap;
     justify-self: center;
 }
 
-.page-global-groups {
-    display: flex;
-    flex-wrap: wrap;
-    justify-items: right;
-    justify-self: center;
-}
-
 #page-zones input {
     margin: .5rem;
 
 }
 
-.zone-names {
-    display: flex;
-    flex-wrap: wrap;
-}
 
 .channel-card input:invalid {
     background-color: lightsalmon;
@@ -284,6 +258,8 @@ flex-wrap: wrap;
 .flex-cont{
     display: flex;
     flex-wrap: wrap;
+    justify-items: right;
+    justify-self: center;
 }
 
 .channel-card input:invalid {
@@ -293,4 +269,12 @@ flex-wrap: wrap;
 .tab:hover, .active {
     background-color: #FFF;
     color: black;
+}
+
+.vfo {
+    display: grid;
+}
+
+label {
+    margin: .5rem;
 }
