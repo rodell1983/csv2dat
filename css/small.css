@@ -3,9 +3,10 @@ body {
     font-family: 'Kanit', sans-serif;
 }
 
-main{
+main {
     display: grid;
 }
+
 header {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -63,6 +64,7 @@ a:hover {
     background-color: white;
 
 }
+
 .main-home {
     padding: 1rem;
     background-color: white;
@@ -132,7 +134,7 @@ option {
 }
 
 
-#channel-opt-zonename{
+#channel-opt-zonename {
     width: 120px;
 }
 
@@ -232,7 +234,7 @@ option {
     background-color: lightsalmon;
 }
 
-.main-menu{
+.main-menu {
     grid-column: 1/-1;
 }
 
@@ -255,7 +257,7 @@ option {
     cursor: pointer;
 }
 
-.flex-cont{
+.flex-cont {
     display: flex;
     flex-wrap: wrap;
     justify-items: right;
@@ -266,7 +268,8 @@ option {
     background-color: lightsalmon;
 }
 
-.tab:hover, .active {
+.tab:hover,
+.active {
     background-color: #FFF;
     color: black;
 }

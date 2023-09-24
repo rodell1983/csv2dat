@@ -309,7 +309,7 @@ function updateDTMFContact(e) {
   id = id.replace("dtmf-contact-", "");
   let key = id.slice(0, 4);
 
-  let contact = Main.getRadioProgram().dtmfContacts[index-1];
+  let contact = Main.getRadioProgram().dtmfContacts[index - 1];
 
   contact[key] = el.value;
 }

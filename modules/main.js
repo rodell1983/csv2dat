@@ -170,7 +170,7 @@ export function loadGlobalVals() {
   }
 }
 
-export function loadVFOVals(){
+export function loadVFOVals() {
   let vfoA = getRadioProgram().vfoA;
 
   for (const key in vfoA) {
@@ -198,17 +198,16 @@ export function loadVFOVals(){
   }
 }
 
-export function loadDTMFVals(){
+export function loadDTMFVals() {
   let dtmfContacts = getRadioProgram().dtmfContacts;
-  for(var i = 1; i <= 20; i++){
-
+  for (var i = 1; i <= 20; i++) {
     let eCode = document.getElementById(`dtmf-contact-code-${i}`);
     let eName = document.getElementById(`dtmf-contact-name-${i}`);
-    if(eCode !== null){
-      eCode.value = dtmfContacts[i-1]['code'];
+    if (eCode !== null) {
+      eCode.value = dtmfContacts[i - 1]["code"];
     }
-    if(eName !== null){
-      eName.value = dtmfContacts[i-1]['name'];
+    if (eName !== null) {
+      eName.value = dtmfContacts[i - 1]["name"];
     }
   }
 
@@ -219,7 +218,6 @@ export function loadDTMFVals(){
       e.value = dtmfGlobal[key];
     }
   }
-
 }
 
 //Add event listeners

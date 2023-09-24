@@ -7,12 +7,11 @@ export function writeDAT() {
   if (response) {
     const fileName = prompt("Enter file name");
 
-    if(fileName.trim() === ''){
+    if (fileName.trim() === "") {
       alert("Invalid file name");
-    }else{
+    } else {
       writeFile(Main.getRadioProgram().generateDatBuffer(), `${fileName}.dat`);
     }
-    
   }
 }
 
@@ -49,7 +48,7 @@ const importData = async (event) => {
       try {
         const fr = await readFile(file);
       } catch (error) {}
-      alert(`${file.name} Imported Successfully`)
+      alert(`${file.name} Imported Successfully`);
     } else {
       alert("File not supported, .txt or .csv files only");
     }
@@ -69,9 +68,5 @@ export function writeFile(buffers, fileName) {
   a.click();
 }
 
-
-
-document
-  .getElementById("import-dat-btn")
-  .addEventListener("click", importData);
+document.getElementById("import-dat-btn").addEventListener("click", importData);
 document.getElementById("write-dat-btn").addEventListener("click", writeDAT);

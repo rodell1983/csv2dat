@@ -624,8 +624,12 @@ export class RadioProgram {
     headAB.push(this.convertHexStr2AB(headString));
 
     headAB.push(bytesFromString(this.dtmfGlobal["localid"], "name", 183));
-    headAB.push(bytesFromString(this.dtmfGlobal["group"], "name", 184,184,185));
-    headAB.push(bytesFromString(this.dtmfGlobal["groupname"], "name", 185,185,185));
+    headAB.push(
+      bytesFromString(this.dtmfGlobal["group"], "name", 184, 184, 185)
+    );
+    headAB.push(
+      bytesFromString(this.dtmfGlobal["groupname"], "name", 185, 185, 185)
+    );
     headAB.push(getU32(this.dtmfGlobal["wordtime"]));
     headAB.push(getU32(this.dtmfGlobal["idletime"]));
     headAB.push(getU32(this.dtmfGlobal["hanguptime"]));
