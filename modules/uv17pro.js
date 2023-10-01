@@ -399,6 +399,17 @@ export class Zone {
     this.maxChannels = maxChannels;
   }
 
+  insertChannel(chan,index){
+    if(index < 0){
+      index = 0;
+    }else if (index >= this.channels.length){
+      index = this.channels.length-1;
+    }
+    
+    this.channels.splice(index,0,chan);
+
+  }
+
   addChannel(chan) {
     if (this.channels.length < this.maxChannels) {
       this.channels.push(chan);

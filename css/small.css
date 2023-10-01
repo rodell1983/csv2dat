@@ -92,6 +92,11 @@ option {
     border: 1px solid #555;
     padding: 0.5rem;
 }
+input[type=checkbox] {
+    box-shadow: none;
+    border-radius: none;
+    cursor: pointer;
+}
 
 
 
@@ -289,3 +294,8 @@ fieldset{
     box-shadow: 2px 2px 2px #333;
     margin: .5rem;
 }
+
+.opt-group {
+    padding: .5rem;
+}
+

@@ -127,7 +127,7 @@ function populateVFOs() {
 }
 
 function createCard(c, index) {
-  let cardHTML = `<span id="ch-index${index}" class="ch-index">${
+  let cardHTML = `<span id="ch-index${index}" class="ch-index" title="Click to Select">${
     index + 1
   }</span>`;
   cardHTML += `<label for"rxFreq${index}">Rx Freq</label>`;
@@ -212,6 +212,8 @@ export function populateChannelCards(radioProgram, zone) {
   for (var i = 0; i < chSelects.length; i++) {
     chSelects[i].addEventListener("change", updateValue);
   }
+
+  document.getElementById("zone-list").selectedIndex = zone;
 }
 
 function clearChannelCards() {

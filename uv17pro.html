@@ -490,16 +490,70 @@
                   <input id="channel-opt-zonename" />
                 </div>
                 <div class="flex-cont">
-                  <button id="channel-opt-first">&lt;&lt;</button>
-                  <button id="channel-opt-prev">&lt;</button>
-                  <button id="channel-opt-next">&gt;</button>
-                  <button id="channel-opt-last">&gt;&gt;</button>
+                  <button id="channel-opt-first" title="First Zone">
+                    &lt;&lt;
+                  </button>
+                  <button id="channel-opt-prev" title="Previous Zone">
+                    &lt;
+                  </button>
+                  <button id="channel-opt-next" title="Next Zone">&gt;</button>
+                  <button id="channel-opt-last" title="Last Zone">
+                    &gt;&gt;
+                  </button>
                 </div>
               </fieldset>
               <fieldset>
                 <legend>Edit Channels</legend>
-                <button id="channel-opt-add">Add</button>
-                <button id="channel-opt-del">Del</button>
+                <button id="channel-opt-add" title="Add New Channel to End">
+                  Add
+                </button>
+                <button
+                  id="channel-opt-del"
+                  title="Delete All Selected Channels"
+                >
+                  Del
+                </button>
+                <button id="channel-opt-clear" title="Clear Entire Zone">
+                  Clear
+                </button>
+              </fieldset>
+              <fieldset>
+                <legend>Move Channels</legend>
+                <button
+                  id="channel-opt-move"
+                  title="Move Selected Channels to Zone"
+                >
+                  Move
+                </button>
+                <select
+                  id="channel-opt-move-dir"
+                  name="channel-opt-move-dir"
+                  title="Move Direction "
+                >
+                  <option value="top">Top</option>
+                  <option value="up">Up</option>
+                  <option value="down">Down</option>
+                  <option value="bottom">Bottom</option>
+                </select>
+
+                <div class="opt-group flex-cont">
+                  <input
+                    type="checkbox"
+                    id="channel-opt-move-zonemove"
+                    name="channel-opt-move-zonemove"
+                    value="0"
+                  />
+                  <label for="channel-opt-move-zonemove"> Move Zones</label>
+                  <input
+                    type="number"
+                    id="channel-opt-move-zones"
+                    name="channel-opt-move-zones"
+                    value="1"
+                    min="1"
+                    max="10"
+                    disabled
+                  />
+                </div>
               </fieldset>
             </div>
           </div>

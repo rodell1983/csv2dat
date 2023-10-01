@@ -94,7 +94,7 @@ function dtmfTabClick() {
   tab.classList.add("active");
 }
 
-function deleteChannels() {
+function deleteChannels(alert = true) {
   let zone = parseInt(document.getElementById("zone-list").value);
   let channels = document.getElementsByClassName("ch-index");
 
@@ -116,9 +116,13 @@ function deleteChannels() {
     } else {
       c = "Channels";
     }
-    alert(`${delCount} ${c} Deleted`);
+    if (alert) {
+      alert(`${delCount} ${c} Deleted`);
+    }
   } else {
-    alert("No channels selected");
+    if (alert) {
+      alert("No channels selected");
+    }
   }
 }
 
@@ -135,7 +139,33 @@ function addChannel() {
   }
 }
 
-export function newProgram() {
+export async function newProgram() {
+  /*
+  const port = await navigator.serial.requestPort();
+
+// Wait for the serial port to open.
+await port.open({ baudRate: 9600 });
+
+while (port.readable) {
+  const reader = port.readable.getReader();
+
+  try {
+    while (true) {
+      const { value, done } = await reader.read();
+      if (done) {
+        // Allow the serial port to be closed later.
+        reader.releaseLock();
+        break;
+      }
+      if (value) {
+        console.log(value);
+      }
+    }
+  } catch (error) {
+    // TODO: Handle non-fatal read error.
+  }
+}
+*/
   let res = confirm(
     "Are you sure you want to create a new program? This will erase all data."
   );
@@ -220,6 +250,67 @@ export function loadDTMFVals() {
   }
 }
 
+function moveZonesToggle() {
+  const cb = document.getElementById("channel-opt-move-zonemove");
+  const zl = document.getElementById("channel-opt-move-zones");
+
+  zl.disabled = !cb.checked;
+}
+
+function channelMoveClick() {
+  let chanList = [];
+  let chanListIndexs = [];
+  let zone = parseInt(document.getElementById("zone-list").value);
+  let channels = document.getElementsByClassName("ch-index");
+
+  for (var i = channels.length - 1; i >= 0; i--) {
+    if (channels[i].style.backgroundColor === "red") {
+      channels[i].style.backgroundColor === "white";
+      chanList.push(radioProgram.getZone(zone).getChannel(i));
+      chanListIndexs.push(i);
+      //radioProgram.getZone(zone).removeChannel(i);
+    }
+  }
+
+  const dir = document.getElementById("channel-opt-move-dir");
+  if (document.getElementById("channel-opt-move-zonemove").checked) {
+    zone =
+      parseInt(document.getElementById("channel-opt-move-zones").value) - 1;
+  }
+  let rp = radioProgram.getZone(zone);
+  switch (dir.value) {
+    case "top":
+      for (var i = 0; i < chanListIndexs.length; i++) {
+        rp.removeChannel(chanListIndexs[i]);
+      }
+      for (var i = chanList.length - 1; i >= 0; i--) {
+        radioProgram.getZone(zone).insertChannel(chanList[i], 0);
+      }
+      break;
+    case "up":
+      for (var i = chanList.length - 1; i >= 0; i--) {
+        rp.removeChannel(chanListIndexs[i]);
+        rp.insertChannel(chanList[i],chanListIndexs[i]-1);
+      }
+      break;
+      case "down":
+      for (var i = chanList.length - 1; i >= 0; i--) {
+        //rp.removeChannel(chanListIndexs[i]);
+        rp.insertChannel(chanList[i],chanListIndexs[i]+1);
+      }
+      break;
+    case "bottom":
+      for (var i = 0; i < chanListIndexs.length; i++) {
+        rp.removeChannel(chanListIndexs[i]);
+      }
+      for (var i = 0; i < chanList.length; i++) {
+        radioProgram.getZone(zone).addChannel(chanList[i]);
+      }
+      break;
+  }
+  UI.populateChannelCards(radioProgram, zone);
+}
+
 //Add event listeners
 
 document.getElementById("zone-list").addEventListener("change", zoneChange);
@@ -239,6 +330,12 @@ document
   .addEventListener("click", channelsTabClick);
 document.getElementById("tab-vfo").addEventListener("click", vfoTabClick);
 document.getElementById("tab-dtmf").addEventListener("click", dtmfTabClick);
+document
+  .getElementById("channel-opt-move-zonemove")
+  .addEventListener("click", moveZonesToggle);
+document
+  .getElementById("channel-opt-move")
+  .addEventListener("click", channelMoveClick);
 
 clearPages();
 channelsTabClick();
