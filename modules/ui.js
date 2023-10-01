@@ -177,9 +177,30 @@ function createCard(c, index) {
 }
 
 function chIndexClick(e) {
+  //alert(e.target.textContent);
+  let index = parseInt(e.target.textContent) - 1;
+  let card = document.getElementById(`card${index}`);
+
   if (e.currentTarget.style.backgroundColor == "red") {
-    e.currentTarget.style.backgroundColor = "white";
+    for (const child of card.children) {
+      //odd
+      if (index & (1 == 1)) {
+        child.style.backgroundColor = "lightgrey";
+      } else {
+        child.style.backgroundColor = "white";
+      }
+    }
+    e.currentTarget.style.backgroundColor = "lightgrey";
   } else {
+    for (const child of card.children) {
+      //odd
+      if (index & (1 == 1)) {
+        child.style.backgroundColor = "#fffec8";
+      } else {
+        child.style.backgroundColor = "#fffedd";
+      }
+
+    }
     e.currentTarget.style.backgroundColor = "red";
   }
 }
@@ -266,14 +287,12 @@ function updateGV(e) {
 }
 
 function updateZoneName(e) {
-
   let el = e.target;
   let id = el.getAttribute("id");
   let num = 1;
-  if(id == 'channel-opt-zonename'){
-    num = parseInt(document.getElementById('zone-list').value);
-
-  }else{
+  if (id == "channel-opt-zonename") {
+    num = parseInt(document.getElementById("zone-list").value);
+  } else {
     id = id.replace("zones-name", "");
     num = parseInt(id) - 1;
   }
