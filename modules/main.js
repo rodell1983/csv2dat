@@ -94,7 +94,7 @@ function dtmfTabClick() {
   tab.classList.add("active");
 }
 
-function deleteChannels(alert = true) {
+function deleteChannels(showAlert = true) {
   let zone = parseInt(document.getElementById("zone-list").value);
   let channels = document.getElementsByClassName("ch-index");
 
@@ -116,7 +116,7 @@ function deleteChannels(alert = true) {
     } else {
       c = "Channels";
     }
-    if (alert) {
+    if (showAlert) {
       alert(`${delCount} ${c} Deleted`);
     }
   } else {
@@ -311,6 +311,16 @@ function channelMoveClick() {
   UI.populateChannelCards(radioProgram, zone);
 }
 
+function clearChannelsClick(){
+  const res = confirm('Are you sure you want to remove all channels from this zone?');
+
+  if(res){
+    let zone = parseInt(document.getElementById("zone-list").value);
+    radioProgram.getZone(zone).clearChannels();
+    UI.populateChannelCards(radioProgram, zone);
+  }
+}
+
 //Add event listeners
 
 document.getElementById("zone-list").addEventListener("change", zoneChange);
@@ -336,6 +346,8 @@ document
 document
   .getElementById("channel-opt-move")
   .addEventListener("click", channelMoveClick);
+document.getElementById('channel-opt-clear')
+  .addEventListener('click',clearChannelsClick);
 
 clearPages();
 channelsTabClick();
