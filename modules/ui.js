@@ -266,12 +266,20 @@ function updateGV(e) {
 }
 
 function updateZoneName(e) {
+
   let el = e.target;
   let id = el.getAttribute("id");
-  id = id.replace("zones-name", "");
-  let num = parseInt(id) - 1;
+  let num = 1;
+  if(id == 'channel-opt-zonename'){
+    num = parseInt(document.getElementById('zone-list').value);
+
+  }else{
+    id = id.replace("zones-name", "");
+    num = parseInt(id) - 1;
+  }
 
   Main.getRadioProgram().getZone(num).setName(el.value);
+  Main.loadZoneNames();
 }
 
 //vfo
