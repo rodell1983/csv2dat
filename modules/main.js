@@ -73,7 +73,10 @@ function zonesTabClick() {
 }
 
 function channelsTabClick() {
-  UI.populateChannelCards(radioProgram,document.getElementById('zone-list').value);
+  UI.populateChannelCards(
+    radioProgram,
+    document.getElementById("zone-list").value
+  );
   let page = document.getElementById("page-channels");
   let tab = document.getElementById("tab-channels");
   clearPages();
@@ -251,13 +254,11 @@ export function loadDTMFVals() {
   }
 }
 
-export function loadZoneNames(){
-
-  for(var i = 0; i < radioProgram.maxZones; i++){
-    let el = document.getElementById(`zones-name${i+1}`);
-    el.value= radioProgram.getZone(i).getName();
+export function loadZoneNames() {
+  for (var i = 0; i < radioProgram.maxZones; i++) {
+    let el = document.getElementById(`zones-name${i + 1}`);
+    el.value = radioProgram.getZone(i).getName();
   }
-
 }
 
 function moveZonesToggle() {
@@ -272,20 +273,34 @@ function channelMoveClick() {
   let chanListIndexs = [];
   let zone = parseInt(document.getElementById("zone-list").value);
   let channels = document.getElementsByClassName("ch-index");
+  let selected = false;
 
   for (var i = channels.length - 1; i >= 0; i--) {
     if (channels[i].style.backgroundColor === "red") {
       channels[i].style.backgroundColor === "white";
       chanList.push(radioProgram.getZone(zone).getChannel(i));
       chanListIndexs.push(i);
+      selected = true;
       //radioProgram.getZone(zone).removeChannel(i);
     }
   }
 
+  if (!selected){
+    alert('No channels selected');
+    return;
+  }
+
   const dir = document.getElementById("channel-opt-move-dir");
   if (document.getElementById("channel-opt-move-zonemove").checked) {
-    zone =
+    const selectedZone =
       parseInt(document.getElementById("channel-opt-move-zones").value) - 1;
+    if (selectedZone < 1 || selectedZone > 10) {
+      alert("Zone must be between 1-9");
+      document.getElementById("channel-opt-move-zones").value = zone +1;
+      return;
+    } else {
+      zone = selectedZone;
+    }
   }
   let rp = radioProgram.getZone(zone);
   switch (dir.value) {
@@ -300,13 +315,13 @@ function channelMoveClick() {
     case "up":
       for (var i = chanList.length - 1; i >= 0; i--) {
         rp.removeChannel(chanListIndexs[i]);
-        rp.insertChannel(chanList[i],chanListIndexs[i]-1);
+        rp.insertChannel(chanList[i], chanListIndexs[i] - 1);
       }
       break;
-      case "down":
+    case "down":
       for (var i = chanList.length - 1; i >= 0; i--) {
         //rp.removeChannel(chanListIndexs[i]);
-        rp.insertChannel(chanList[i],chanListIndexs[i]+1);
+        rp.insertChannel(chanList[i], chanListIndexs[i] + 1);
       }
       break;
     case "bottom":
@@ -321,10 +336,12 @@ function channelMoveClick() {
   UI.populateChannelCards(radioProgram, zone);
 }
 
-function clearChannelsClick(){
-  const res = confirm('Are you sure you want to remove all channels from this zone?');
+function clearChannelsClick() {
+  const res = confirm(
+    "Are you sure you want to remove all channels from this zone?"
+  );
 
-  if(res){
+  if (res) {
     let zone = parseInt(document.getElementById("zone-list").value);
     radioProgram.getZone(zone).clearChannels();
     UI.populateChannelCards(radioProgram, zone);
@@ -356,8 +373,9 @@ document
 document
   .getElementById("channel-opt-move")
   .addEventListener("click", channelMoveClick);
-document.getElementById('channel-opt-clear')
-  .addEventListener('click',clearChannelsClick);
+document
+  .getElementById("channel-opt-clear")
+  .addEventListener("click", clearChannelsClick);
 
 clearPages();
 channelsTabClick();
