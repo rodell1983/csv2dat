@@ -73,6 +73,7 @@ function zonesTabClick() {
 }
 
 function channelsTabClick() {
+  UI.populateChannelCards(radioProgram,document.getElementById('zone-list').value);
   let page = document.getElementById("page-channels");
   let tab = document.getElementById("tab-channels");
   clearPages();
@@ -250,6 +251,15 @@ export function loadDTMFVals() {
   }
 }
 
+export function loadZoneNames(){
+
+  for(var i = 0; i < radioProgram.maxZones; i++){
+    let el = document.getElementById(`zones-name${i+1}`);
+    el.value= radioProgram.getZone(i).getName();
+  }
+
+}
+
 function moveZonesToggle() {
   const cb = document.getElementById("channel-opt-move-zonemove");
   const zl = document.getElementById("channel-opt-move-zones");
@@ -354,6 +364,7 @@ channelsTabClick();
 
 loadRPFromChirp(Chirp.getcsvIndexes(), Chirp.getcsvList());
 loadGlobalVals();
+loadZoneNames();
 loadVFOVals();
 loadDTMFVals();
 

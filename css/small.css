@@ -201,6 +201,7 @@ option {
     flex-wrap: wrap;
     padding: .5rem;
     background-color: inherit;
+    justify-content: center;
 }
 
 .page-global-group select {
