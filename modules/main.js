@@ -272,6 +272,7 @@ function channelMoveClick() {
   let chanList = [];
   let chanListIndexs = [];
   let zone = parseInt(document.getElementById("zone-list").value);
+  let orgZone = zone;
   let channels = document.getElementsByClassName("ch-index");
   let selected = false;
 
@@ -302,11 +303,12 @@ function channelMoveClick() {
       zone = selectedZone;
     }
   }
-  let rp = radioProgram.getZone(zone);
+  let rpDelZone = radioProgram.getZone(orgZone);
+  let rpNewZone = radioProgram.getZone(zone);
   switch (dir.value) {
     case "top":
       for (var i = 0; i < chanListIndexs.length; i++) {
-        rp.removeChannel(chanListIndexs[i]);
+        rpDelZone.removeChannel(chanListIndexs[i]);
       }
       for (var i = chanList.length - 1; i >= 0; i--) {
         radioProgram.getZone(zone).insertChannel(chanList[i], 0);
@@ -314,25 +316,27 @@ function channelMoveClick() {
       break;
     case "up":
       for (var i = chanList.length - 1; i >= 0; i--) {
-        rp.removeChannel(chanListIndexs[i]);
-        rp.insertChannel(chanList[i], chanListIndexs[i] - 1);
+        rpDelZone.removeChannel(chanListIndexs[i]);
+        rpNewZone.insertChannel(chanList[i], chanListIndexs[i] - 1);
       }
       break;
     case "down":
       for (var i = chanList.length - 1; i >= 0; i--) {
         //rp.removeChannel(chanListIndexs[i]);
-        rp.insertChannel(chanList[i], chanListIndexs[i] + 1);
+        rpNewZone.insertChannel(chanList[i], chanListIndexs[i] + 1);
       }
       break;
     case "bottom":
       for (var i = 0; i < chanListIndexs.length; i++) {
-        rp.removeChannel(chanListIndexs[i]);
+        rpDelZone.removeChannel(chanListIndexs[i]);
       }
       for (var i = 0; i < chanList.length; i++) {
         radioProgram.getZone(zone).addChannel(chanList[i]);
       }
       break;
   }
+
+  storeGlobalVals();
   UI.populateChannelCards(radioProgram, zone);
 }
 
