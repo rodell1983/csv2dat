@@ -91,7 +91,24 @@ export class UV17Channel {
   setFreqIndex(index) {
     this.freqIndex = index;
   }
+  loadFromJSONChannel(chan) {
+    this.rxFreq = chan.rxFreq;
+    this.strRxCtsDcs = chan.strRxCtsDcs;
+    this.txFreq = chan.txFreq;
+    this.strTxCtsDcs = chan.strTxCtsDcs;
+    this.busyLock = parseInt(chan.busyLock);
+    this.txPower = parseInt(chan.txPower);
+    this.bandwide = parseInt(chan.bandwide);
+    this.scanAdd = parseInt(chan.scanAdd);
+    this.sqMode = parseInt(chan.sqMode);
+    this.pttid = parseInt(chan.pttid);
+    this.signalGroup = parseInt(chan.signalGroup);
+    this.fhss = parseInt(chan.fhss);
+    this.cName = chan.cName;
 
+    this.chanIndex = chan.chanIndex;
+    this.strIndex = chan.strIndex;
+  }
   loadFromChirpChannel(ChirpChannel) {
     this.id = ChirpChannel.location;
     this.rxFreq = this.formatFreq(ChirpChannel.Frequency);
@@ -399,15 +416,14 @@ export class Zone {
     this.maxChannels = maxChannels;
   }
 
-  insertChannel(chan,index){
-    if(index < 0){
+  insertChannel(chan, index) {
+    if (index < 0) {
       index = 0;
-    }else if (index >= this.channels.length){
-      index = this.channels.length-1;
+    } else if (index >= this.channels.length) {
+      index = this.channels.length - 1;
     }
-    
-    this.channels.splice(index,0,chan);
 
+    this.channels.splice(index, 0, chan);
   }
 
   addChannel(chan) {

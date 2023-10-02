@@ -182,8 +182,7 @@ while (port.readable) {
 }
 
 export function storeGlobalVals() {
-  let values = radioProgram.globalValues;
-  localStorage.globalValues = JSON.stringify(values);
+  localStorage.globalValues = JSON.stringify(radioProgram);
 }
 
 export function getGlobalVals() {
@@ -191,7 +190,7 @@ export function getGlobalVals() {
 }
 
 export function loadGlobalVals() {
-  let gvs = getGlobalVals();
+  let gvs = getGlobalVals().globalValues;
   if (gvs == null) {
     gvs = radioProgram.globalValues;
   }
@@ -205,6 +204,7 @@ export function loadGlobalVals() {
 }
 
 export function loadVFOVals() {
+
   let vfoA = getRadioProgram().vfoA;
 
   for (const key in vfoA) {
@@ -378,17 +378,42 @@ document
   .addEventListener("click", clearChannelsClick);
 
 clearPages();
+let rp = getGlobalVals();
+if (rp != null) {
+  radioProgram.globalValues = rp.globalValues;
+  radioProgram.vfoA = rp.vfoA;
+  radioProgram.vfoB = rp.vfoB;
+  radioProgram.vfoOpts = rp.vfoOpt;
+  for(var i = 0; i < radioProgram.maxZones; i++){
+    radioProgram.getZone(i).setName(rp.zones[i].name);
+  }
+  radioProgram.dtmfGlobal = rp.dtmfGlobal;
+  radioProgram.dtmfContacts = rp.dtmfContacts;
+
+  for(var z = 0; z < radioProgram.maxZones; z++){
+    for(var c = 0; c < rp.zones[z].channels.length; c++){
+      let jsonChan = rp.zones[z].channels[c];
+      let chan = new UV17Pro.UV17Channel();
+      chan.loadFromJSONChannel(jsonChan);
+      //console.log(chan);
+      radioProgram.getZone(z).addChannel(chan);
+      //console.log(radioProgram.getZone(z).getChannel(c));
+    }
+  }
+
+  //UI.populateChannelCards(radioProgram,0);
+  
+} else {
+  storeGlobalVals();
+}
+
 channelsTabClick();
 
-loadRPFromChirp(Chirp.getcsvIndexes(), Chirp.getcsvList());
+//loadRPFromChirp(Chirp.getcsvIndexes(), Chirp.getcsvList());
 loadGlobalVals();
 loadZoneNames();
 loadVFOVals();
 loadDTMFVals();
 
-let gvs = getGlobalVals();
-if (gvs != null) {
-  radioProgram.globalValues = gvs;
-} else {
-  storeGlobalVals();
-}
+
+

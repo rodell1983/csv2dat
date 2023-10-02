@@ -171,7 +171,39 @@ function createCard(c, index) {
   div.innerHTML = cardHTML;
   div.classList.add("channel-card");
   div.id = `card${index}`;
-  //div.appendChild(createChannelEditor());
+
+  //Set default
+  for (const child of div.children) {
+ 
+        switch(child.id){
+          case `txpower${index}`:
+            child.selectedIndex = c.txPower;
+          break;
+        case `bandwide${index}`:
+          child.selectedIndex = c.bandwide;
+          break;
+        case `scanAdd${index}`:
+          child.selectedIndex = c.scanAdd;
+          break;
+        case `sqMode${index}`:
+          child.selectedIndex = c.sqMode;
+          break;
+        case `pttId${index}`:
+          child.selectedIndex = c.pttid;
+          break;
+        case `busyLock${index}`:
+          child.selectedIndex = c.busyLock;
+          break;
+        case `fhss${index}`:
+          child.selectedIndex = c.fhss;
+          break;
+        case `signalGroup${index}`:
+            child.value = c.signalGroup + 1;
+        default:
+          break;
+      }
+
+  }
 
   return div;
 }
@@ -199,7 +231,6 @@ function chIndexClick(e) {
       } else {
         child.style.backgroundColor = "#fffedd";
       }
-
     }
     e.currentTarget.style.backgroundColor = "red";
   }
@@ -235,6 +266,7 @@ export function populateChannelCards(radioProgram, zone) {
   }
 
   document.getElementById("zone-list").selectedIndex = zone;
+  Main.storeGlobalVals();
 }
 
 function clearChannelCards() {
@@ -272,9 +304,9 @@ function optLastClick() {
 function updateValue(e) {
   //Only update when input is valid
   let index = parseInt(e.target.getAttribute("index"));
-  if (e.target.checkValidity()) {
-    saveChannel(index);
-  }
+  //if (e.target.checkValidity()) {
+  saveChannel(index);
+  //}
 }
 
 function updateGV(e) {
@@ -299,6 +331,7 @@ function updateZoneName(e) {
 
   Main.getRadioProgram().getZone(num).setName(el.value);
   Main.loadZoneNames();
+  Main.storeGlobalVals();
 }
 
 //vfo
@@ -312,11 +345,15 @@ function updateVFO(e) {
   let vfo;
   if (aorb == "A") {
     vfo = Main.getRadioProgram().vfoA;
+    vfo[id] = el.value;
+    Main.getRadioProgram().vfoA = vfo;
   } else {
     vfo = Main.getRadioProgram().vfoB;
+    vfo[id] = el.value;
+    Main.getRadioProgram().vfoB = vfo;
   }
 
-  vfo[id] = el.value;
+  Main.storeGlobalVals();
 }
 
 function updateVFOopt(e) {
@@ -327,6 +364,8 @@ function updateVFOopt(e) {
   let vfo = Main.getRadioProgram().vfoOpts;
 
   vfo[id] = el.value;
+  Main.getRadioProgram().vfoOpts = vfo;
+  Main.storeGlobalVals();
 }
 
 //dtmf
@@ -341,6 +380,8 @@ function updateDTMFContact(e) {
   let contact = Main.getRadioProgram().dtmfContacts[index - 1];
 
   contact[key] = el.value;
+  Main.getRadioProgram().dtmfContacts[index - 1] = contact;
+  Main.storeGlobalVals();
 }
 
 function updateDTMFGlobal(e) {
@@ -351,6 +392,8 @@ function updateDTMFGlobal(e) {
   let dtmf = Main.getRadioProgram().dtmfGlobal;
 
   dtmf[id] = el.value;
+  Main.getRadioProgram().dtmfGlobal = dtmf;
+  Main.storeGlobalVals();
 }
 
 function saveChannel(index) {
@@ -370,10 +413,13 @@ function saveChannel(index) {
   chan.sqMode = parseInt(document.getElementById(`sqMode${index}`).value);
   chan.pttid = parseInt(document.getElementById(`pttId${index}`).value);
   chan.busyLock = parseInt(document.getElementById(`busyLock${index}`).value);
+  chan.signalGroup = parseInt(document.getElementById(`signalGroup${index}`).value)-1;
   chan.fhss = parseInt(document.getElementById(`fhss${index}`).value);
   chan.cName = document.getElementById(`cname${index}`).value;
 
-  //Main.getRadioProgram().getZone(zone).setChannel(chan, index);
+  Main.getRadioProgram().zones[zone].setChannel(chan, index);
+
+  Main.storeGlobalVals();
 }
 
 populateVFOs();
