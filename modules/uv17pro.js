@@ -983,7 +983,7 @@ scanlow: 400,
     pttid: 3,
     */
 
-    let bcl_AB = getU32(this.vfoOpts["sqmode"]);
+    let bcl_AB = getU32(this.vfoOpts["bcl"]);
     let pttId_AB = getU32(this.vfoOpts["pttid"]);
     let sl_AB = bytesFromString(this.vfoOpts["scanlow"], "name", -1);
     let sh_AB = bytesFromString(this.vfoOpts["scanhigh"], "name", -1);
@@ -1023,6 +1023,7 @@ scanlow: 400,
 }
 
 function getU32(val) {
+  val = parseInt(val);
   let rVal = new Uint8Array(4);
   rVal[0] = val;
 

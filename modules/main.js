@@ -144,6 +144,7 @@ function addChannel() {
 }
 
 export async function newProgram() {
+  
   /*
   const port = await navigator.serial.requestPort();
 
@@ -151,11 +152,29 @@ export async function newProgram() {
 await port.open({ baudRate: 9600 });
 
 while (port.readable) {
+
+  const writer = port.writable.getWriter();
+
+  const s = 'PROGRAMCOLORPROU';
+
+  const utf8EncodeText = new TextEncoder();
+
+let data = new Uint8Array(16);
+data = utf8EncodeText.encode(s);
+
+alert(data);
+
+await writer.write(data);
+
+
+// Allow the serial port to be closed later.
+writer.releaseLock();
   const reader = port.readable.getReader();
 
   try {
     while (true) {
       const { value, done } = await reader.read();
+      
       if (done) {
         // Allow the serial port to be closed later.
         reader.releaseLock();
