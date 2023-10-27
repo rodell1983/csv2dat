@@ -14,19 +14,61 @@ export function clearRadioProgram() {
   radioProgram = new UV17Pro.RadioProgram();
 }
 
-export function loadRPFromChirp(indexes, list) {
+export function loadRPFromChirp(
+  indexes,
+  list,
+  zone = 0,
+  importStyle = 0,
+  overflow = true,
+  clear = true
+) {
+  let channelIndex = 0;
+
   if (!validateChirpCsv(indexes, list)) {
     return false;
   }
-  radioProgram.clearZones();
 
-  for (var i = 0; i < list.length - 1; i++) {
-    let cc = new Chirp.ChirpChannel(indexes, list[i]);
-    let c = new UV17Pro.UV17Channel();
-    c.loadFromChirpChannel(cc);
-    let zIndex = Math.trunc(i / 100);
-    radioProgram.getZone(zIndex).addChannel(c);
+  if (clear) {
+    radioProgram.clearZones();
   }
+
+  let overwrite = false;
+  if (importStyle == 0) {
+    overwrite = true;
+  }
+  //Overwrite
+  while (zone < 10) {
+    for (i = 0; i < 100; i++) {
+      if (channelIndex < list.length) {
+        let cc = new Chirp.ChirpChannel(indexes, list[channelIndex]);
+        let c = new UV17Pro.UV17Channel();
+        c.loadFromChirpChannel(cc);
+        //write channel only if empty or overwrite
+        if (i < radioProgram.getZone(zone).getChannelCount()) {
+          if (overwrite || radioProgram.getZone(zone).getChannel(i).isEmpty()) {
+            radioProgram.getZone(zone).setChannel(c, i);
+            channelIndex++;
+          }
+        } else {
+          radioProgram.getZone(zone).addChannel(c);
+          channelIndex++;
+        }
+      } else {
+        break;
+      }
+    }
+    if (overflow) {
+      zone++;
+    } else {
+      //exit loop
+      zone = 10;
+    }
+  }
+
+  if (channelIndex < list.length) {
+    alert(`${list.length - channelIndex} Channels not loaded.`);
+  }
+
   UI.populateChannelCards(radioProgram, 0);
 }
 
@@ -144,7 +186,6 @@ function addChannel() {
 }
 
 export async function newProgram() {
-  
   /*
   const port = await navigator.serial.requestPort();
 
@@ -223,7 +264,6 @@ export function loadGlobalVals() {
 }
 
 export function loadVFOVals() {
-
   let vfoA = getRadioProgram().vfoA;
 
   for (const key in vfoA) {
@@ -305,8 +345,8 @@ function channelMoveClick() {
     }
   }
 
-  if (!selected){
-    alert('No channels selected');
+  if (!selected) {
+    alert("No channels selected");
     return;
   }
 
@@ -316,7 +356,7 @@ function channelMoveClick() {
       parseInt(document.getElementById("channel-opt-move-zones").value) - 1;
     if (selectedZone < 1 || selectedZone > 10) {
       alert("Zone must be between 1-9");
-      document.getElementById("channel-opt-move-zones").value = zone +1;
+      document.getElementById("channel-opt-move-zones").value = zone + 1;
       return;
     } else {
       zone = selectedZone;
@@ -371,6 +411,7 @@ function clearChannelsClick() {
   }
 }
 
+
 //Add event listeners
 
 document.getElementById("zone-list").addEventListener("change", zoneChange);
@@ -381,6 +422,8 @@ document
   .getElementById("channel-opt-add")
   .addEventListener("click", addChannel);
 document.getElementById("new-dat-btn").addEventListener("click", newProgram);
+
+
 
 //Tab pages
 document.getElementById("tab-global").addEventListener("click", globalTabClick);
@@ -407,14 +450,14 @@ if (rp != null) {
   radioProgram.vfoA = rp.vfoA;
   radioProgram.vfoB = rp.vfoB;
   radioProgram.vfoOpts = rp.vfoOpt;
-  for(var i = 0; i < radioProgram.maxZones; i++){
+  for (var i = 0; i < radioProgram.maxZones; i++) {
     radioProgram.getZone(i).setName(rp.zones[i].name);
   }
   radioProgram.dtmfGlobal = rp.dtmfGlobal;
   radioProgram.dtmfContacts = rp.dtmfContacts;
 
-  for(var z = 0; z < radioProgram.maxZones; z++){
-    for(var c = 0; c < rp.zones[z].channels.length; c++){
+  for (var z = 0; z < radioProgram.maxZones; z++) {
+    for (var c = 0; c < rp.zones[z].channels.length; c++) {
       let jsonChan = rp.zones[z].channels[c];
       let chan = new UV17Pro.UV17Channel();
       chan.loadFromJSONChannel(jsonChan);
@@ -425,7 +468,6 @@ if (rp != null) {
   }
 
   //UI.populateChannelCards(radioProgram,0);
-  
 } else {
   storeGlobalVals();
 }
@@ -437,6 +479,3 @@ loadGlobalVals();
 loadZoneNames();
 loadVFOVals();
 loadDTMFVals();
-
-
-

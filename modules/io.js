@@ -1,5 +1,6 @@
 import * as Chirp from "./chirp.js";
 import * as Main from "./main.js";
+import * as UI from "./ui.js";
 
 export function writeDAT() {
   const response = confirm(".dat file will be saved to downloads");
@@ -31,8 +32,11 @@ const readFile = (file) => {
       //Remove first line and store list
       csvList = csvList.splice(1);
       Chirp.storecsvList(csvList);
-
-      Main.loadRPFromChirp(Chirp.getcsvIndexes(), Chirp.getcsvList());
+      
+      UI.loadImportPopup(`Import ${file.name}`);
+      
+ 
+      //Main.loadRPFromChirp(Chirp.getcsvIndexes(), Chirp.getcsvList());
     };
 
     reader.readAsText(file);
@@ -48,7 +52,8 @@ const importData = async (event) => {
       try {
         const fr = await readFile(file);
       } catch (error) {}
-      alert(`${file.name} Imported Successfully`);
+      //alert(`${file.name} Imported Successfully`);
+      //document.querySelector('.popup-title').innerHTML = `Import ${file.name}`;
     } else {
       alert("File not supported, .txt or .csv files only");
     }

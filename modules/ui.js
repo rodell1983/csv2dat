@@ -2,6 +2,128 @@ import * as Chirp from "./chirp.js";
 import * as UV17Pro from "./uv17pro.js";
 import * as Main from "./main.js";
 
+function clearPopup() {
+  document.getElementById("popup").style.display = "none";
+  //document.getElementById("popup-title").innerHTML = "";
+
+  let body = document.getElementById("popup-body");
+  while (body.firstChild) {
+    body.removeChild(body.firstChild);
+  }
+}
+function showPopup(title, body) {
+  document.getElementById("popup-title").innerHTML = title;
+  document.getElementById("popup-body").appendChild(body);
+
+  document.getElementById("popup").style.display = "grid";
+}
+
+function hidePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+
+export function loadImportPopup(title) {
+
+  clearPopup();
+
+  let body = document.createElement("div");
+  body.innerHTML = `<fieldset class="import-popup-opts" >
+
+              <label for="import-zone-list">Beginning Zone</label>
+              <select name="import-zone-list" id="import-zone-list">
+                <option value="0">Zone 1</option>
+                <option value="1">Zone 2</option>
+                <option value="2">Zone 3</option>
+                <option value="3">Zone 4</option>
+                <option value="4">Zone 5</option>
+                <option value="5">Zone 6</option>
+                <option value="6">Zone 7</option>
+                <option value="7">Zone 8</option>
+                <option value="8">Zone 9</option>
+                <option value="9">Zone 10</option>
+              </select>
+
+              <fieldset>
+                <legend>Import Style</legend>
+                <input
+                  type="radio"
+                  name="import-opt-style"
+                  id="import-opt-overwrite"
+                  value="overwrite"
+                  title="Overwrite all channels beginning at selected zone"
+                  checked
+                />
+                <label for="import-opt-overwrite">Overwrite</label>
+                <input
+                  type="radio"
+                  name="import-opt-style"
+                  id="import-opt-append"
+                  value="append"
+                  title="Only write to empty channels"
+                />
+                <label for="import-opt-append">Append</label>
+              </fieldset>
+              <div class="flex-cont">
+                <input
+                  type="checkbox"
+                  id="import-opt-overflow"
+                  name="import-opt-overflow"
+                  title="Allow additional channels to load into the next zone(s)"
+                  checked
+                />
+                <label for="import-opt-overflow">Allow Zone Overflow</label>
+                <input
+                  type="checkbox"
+                  id="import-opt-clearall"
+                  name="import-opt-clearall"
+                  title="Clear All zones prior to import"
+                  checked
+                />
+                <label for="import-opt-clearall">Clear All Zones</label>
+                </div>
+                <div class="flex-cont">
+                  <button id="popup-import-btn">Import</button
+                  ><button id="popup-cancel-btn">Cancel</button>
+                </div>
+              </div>
+              </fieldset>`;
+  showPopup(title, body);
+
+  document.getElementById("import-zone-list").value =
+    document.getElementById("zone-list").value;
+  //Load events
+  document
+    .getElementById("popup-import-btn")
+    .addEventListener("click", popupImportClick);
+
+  document
+    .getElementById("popup-cancel-btn")
+    .addEventListener("click", hidePopup);
+}
+
+//Pop Up
+function popupImportClick() {
+  const zone = document.getElementById("import-zone-list").value;
+  let importStyle = 0;
+  if (document.getElementById("import-opt-overwrite").checked) {
+    importStyle = 0;
+  } else {
+    importStyle = 1;
+  }
+  const overflow = document.getElementById("import-opt-overflow").checked;
+  const clear = document.getElementById("import-opt-clearall").checked;
+
+  Main.loadRPFromChirp(
+    Chirp.getcsvIndexes(),
+    Chirp.getcsvList(),
+    zone,
+    importStyle,
+    overflow,
+    clear
+  );
+  hidePopup();
+}
+
 function createDTMFContacts() {
   let dtmf = "";
   for (var i = 1; i <= 20; i++) {
@@ -174,35 +296,33 @@ function createCard(c, index) {
 
   //Set default
   for (const child of div.children) {
- 
-        switch(child.id){
-          case `txpower${index}`:
-            child.selectedIndex = c.txPower;
-          break;
-        case `bandwide${index}`:
-          child.selectedIndex = c.bandwide;
-          break;
-        case `scanAdd${index}`:
-          child.selectedIndex = c.scanAdd;
-          break;
-        case `sqMode${index}`:
-          child.selectedIndex = c.sqMode;
-          break;
-        case `pttId${index}`:
-          child.selectedIndex = c.pttid;
-          break;
-        case `busyLock${index}`:
-          child.selectedIndex = c.busyLock;
-          break;
-        case `fhss${index}`:
-          child.selectedIndex = c.fhss;
-          break;
-        case `signalGroup${index}`:
-            child.value = c.signalGroup + 1;
-        default:
-          break;
-      }
-
+    switch (child.id) {
+      case `txpower${index}`:
+        child.selectedIndex = c.txPower;
+        break;
+      case `bandwide${index}`:
+        child.selectedIndex = c.bandwide;
+        break;
+      case `scanAdd${index}`:
+        child.selectedIndex = c.scanAdd;
+        break;
+      case `sqMode${index}`:
+        child.selectedIndex = c.sqMode;
+        break;
+      case `pttId${index}`:
+        child.selectedIndex = c.pttid;
+        break;
+      case `busyLock${index}`:
+        child.selectedIndex = c.busyLock;
+        break;
+      case `fhss${index}`:
+        child.selectedIndex = c.fhss;
+        break;
+      case `signalGroup${index}`:
+        child.value = c.signalGroup + 1;
+      default:
+        break;
+    }
   }
 
   return div;
@@ -413,7 +533,8 @@ function saveChannel(index) {
   chan.sqMode = parseInt(document.getElementById(`sqMode${index}`).value);
   chan.pttid = parseInt(document.getElementById(`pttId${index}`).value);
   chan.busyLock = parseInt(document.getElementById(`busyLock${index}`).value);
-  chan.signalGroup = parseInt(document.getElementById(`signalGroup${index}`).value)-1;
+  chan.signalGroup =
+    parseInt(document.getElementById(`signalGroup${index}`).value) - 1;
   chan.fhss = parseInt(document.getElementById(`fhss${index}`).value);
   chan.cName = document.getElementById(`cname${index}`).value;
 
@@ -468,3 +589,4 @@ document
 document
   .getElementById("channel-opt-last")
   .addEventListener("click", optLastClick);
+document.getElementById("popup-close-btn").addEventListener("click", hidePopup);

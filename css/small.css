@@ -1,3 +1,7 @@
+*, ::after,::before {
+    box-sizing: border-box;
+}
+
 body {
     background-color: darkgray;
     font-family: 'Kanit', sans-serif;
@@ -5,6 +9,7 @@ body {
 
 main {
     display: grid;
+
 }
 
 header {
@@ -92,7 +97,7 @@ option {
     border: 1px solid #555;
     padding: 0.5rem;
 }
-input[type=checkbox] {
+input[type='checkbox'],input[type='radio']  {
     box-shadow: none;
     border-radius: none;
     cursor: pointer;
@@ -300,3 +305,44 @@ fieldset{
     padding: .5rem;
 }
 
+#popup{
+    display: none;
+    width:100%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #f66700;
+    box-shadow: 0 2px 5px #333;
+    grid-gap: .25rem;
+    animation-name: animatetop;
+    animation-duration: 0.5s;
+
+
+}
+
+#popup header{
+    display: grid;
+    grid-template-columns: auto max-content;
+    
+
+}
+
+.import-popup-opts{
+    display: grid;
+    justify-content: center;
+    padding: 1rem;
+    grid-gap: .25rem;
+    justify-self: center;
+}
+
+@keyframes animatetop {
+    from{top:-300px;opacity: 0}
+    to{top:0; opacity: 1;}
+    
+}
+
+.close-btn{
+    justify-self: right;
+    height: max-content;
+}

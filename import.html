@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CSV2DAT</title>
+    <meta
+      name="description"
+      content="Online radio editor - Import Chirp csv file and export to Dat"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit&family=Oswald&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/small.css" />
+    <link rel="stylesheet" href="css/med.css" />
+    <link rel="stylesheet" href="css/large.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <a href="./index.html"
+          ><img src="./images/logo.png" alt="CSV2DAT Logo"
+        /></a>
+      </div>
+      <div>
+        <h1>CSV-2-DAT Online Radio Editing Software</h1>
+      </div>
+      <nav class="main-menu">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="./uv17pro.html">Online Editor</a></li>
+          <li>
+            <a href="https://github.com/rodell1983/csv2dat" target="_blank"
+              >GitHub</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="page">
+      <main class="main-home">
+        <div id="import-popup">
+          <button class="close-btn">X</button>
+          <label for="zone-list">Select Zone to Import to</label>
+          <select name="zone-list" id="zone-list">
+            <option value="0">Zone 1</option>
+            <option value="1">Zone 2</option>
+            <option value="2">Zone 3</option>
+            <option value="3">Zone 4</option>
+            <option value="4">Zone 5</option>
+            <option value="5">Zone 6</option>
+            <option value="6">Zone 7</option>
+            <option value="7">Zone 8</option>
+            <option value="8">Zone 9</option>
+            <option value="9">Zone 10</option>
+          </select>
+
+          <fieldset>
+            <legend>Import Style</legend>
+            <input
+              type="radio"
+              name="import-opt-style"
+              id="import-opt-overwrite"
+              value="overwrite"
+              checked
+            />
+            <label for="import-opt-overwrite">Overwrite</label>
+            <input
+              type="radio"
+              name="import-opt-style"
+              id="import-opt-append"
+              value="append"
+            />
+            <label for="import-opt-append">Append</label>
+          </fieldset>
+          <div>
+            <input
+              type="checkbox"
+              id="import-opt-overflow"
+              name="import-opt-overflow"
+            />
+            <label for="import-opt-overflow">Allow Zone Overflow</label>
+          </div>
+
+          <button>Import</button>
+        </div>
+      </main>
+      <footer></footer>
+    </div>
+  </body>
+</html>
