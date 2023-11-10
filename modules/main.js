@@ -243,6 +243,7 @@ writer.releaseLock();
 
 export function storeGlobalVals() {
   localStorage.globalValues = JSON.stringify(radioProgram);
+
 }
 
 export function getGlobalVals() {

@@ -244,7 +244,7 @@ export class UV17Channel {
         //this.cName = this.cName.substring(0, 12);
       }
     } catch {
-      alert(this.cName);
+
     }
 
     if (ChirpChannel.Mode == "NFM") {
