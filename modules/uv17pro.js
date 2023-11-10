@@ -1,3 +1,5 @@
+import { ChirpChannel } from "./chirp.js";
+
 export class UV17Buffer {
   buffer;
   index = 0;
@@ -223,8 +225,27 @@ export class UV17Channel {
         }
       }
     }
+    //Format Analog
+    if (!txDigital && this.strTxCtsDcs.trim() != "") {
+      if (this.strTxCtsDcs.includes(".") == false) {
+        this.strTxCtsDcs += ".0";
+      }
+    }
+
+    if (!rxDigital && this.strRxCtsDcs.trim() != "") {
+      if (this.strRxCtsDcs.includes(".") == false) {
+        this.strRxCtsDcs += ".0";
+      }
+    }
 
     this.cName = ChirpChannel.Name;
+    try {
+      if (this.cName.length > 12) {
+        //this.cName = this.cName.substring(0, 12);
+      }
+    } catch {
+      alert(this.cName);
+    }
 
     if (ChirpChannel.Mode == "NFM") {
       this.bandwide = 1;
@@ -233,6 +254,27 @@ export class UV17Channel {
     if (ChirpChannel.Skip == "S") {
       this.scanAdd = 1;
     }
+  }
+
+  hasError() {
+    const errors = this.validateChan();
+    if (errors.length === 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+  validateChan() {
+    let errorList = [];
+
+    if (Number(this.txFreq) === "NaN") {
+      errorList.pop(`Error: invalid Tx Frequency "${this.txFreq}"`);
+    }
+    if (Number(this.rxFreq) === "NaN") {
+      errorList.pop(`Error: invalid Rx Frequency "${this.txFreq}"`);
+    }
+
+    return errorList;
   }
 
   getChannelBuffer() {
@@ -830,6 +872,7 @@ export class RadioProgram {
     return ch_AB;
   }
   generateDatBuffer() {
+    let channelErrors = "";
     let ab = [];
 
     let head = this.genertateDatHead();
@@ -843,6 +886,12 @@ export class RadioProgram {
     for (var zone = 0; zone < this.maxZones; zone++) {
       for (var chan = 0; chan < this.getZone(zone).maxChannels; chan++) {
         let c = this.zones[zone].getChannel(chan);
+
+        if (c.hasError()) {
+          let errors = c.validateChan();
+          channelErrors += `/n ${errors.toString()}`;
+          c = new UV17Channel();
+        }
         c.strIndex = strIndex;
         c.chanIndex = chanIndex;
 
@@ -1056,6 +1105,7 @@ function bytesFromString(
   let int8Qt = int16to8(qt_AB);
 
   str = String(str).trim();
+
   if (str.length == 0) {
     if (type == "zone") {
       return strBytes;

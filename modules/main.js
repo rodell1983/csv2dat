@@ -449,7 +449,7 @@ if (rp != null) {
   radioProgram.globalValues = rp.globalValues;
   radioProgram.vfoA = rp.vfoA;
   radioProgram.vfoB = rp.vfoB;
-  radioProgram.vfoOpts = rp.vfoOpt;
+  radioProgram.vfoOpts = rp.vfoOpts;
   for (var i = 0; i < radioProgram.maxZones; i++) {
     radioProgram.getZone(i).setName(rp.zones[i].name);
   }

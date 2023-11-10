@@ -287,7 +287,7 @@ function createCard(c, index) {
   cardHTML += `<select class="ch-select" index=${index} id="fhss${index}" name="fhss" value="${c.fhss}"><option value="0">On</option>
     <option value="1">Off</option></select>`;
   cardHTML += `<label for"cname${index}">Name</label>`;
-  cardHTML += `<input class="ch-input" index=${index} type="text" id="cname${index}" name="cname" value="${c.cName}" />`;
+  cardHTML += `<input class="ch-input" index=${index} type="text" id="cname${index}" name="cname" value="${c.cName}" maxlength="12" />`;
 
   let div = document.createElement("div");
   div.innerHTML = cardHTML;
